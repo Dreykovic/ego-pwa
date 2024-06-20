@@ -1,0 +1,65 @@
+.react-international-phone-input-container .react-international-phone-input {
+  overflow: visible;
+  height: var(--react-international-phone-height, 36px);
+  box-sizing: border-box;
+  padding: 0 8px;
+  border: none;
+  border-radius: var(--react-international-phone-border-radius, 4px);
+  margin: 0;
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
+  font-family: inherit;
+  font-size: var(--react-international-phone-font-size, 13px);
+}
+
+.react-international-phone-country-selector-button {
+  display: flex;
+  height: var(--react-international-phone-height, 36px);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  margin: 0;
+  -moz-appearance: button;
+  appearance: button;
+  -webkit-appearance: button;
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
+  cursor: pointer;
+  text-transform: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.react-international-phone-country-selector-dropdown {
+  position: absolute;
+  z-index: 1;
+  top: var(--react-international-phone-dropdown-top, 44px);
+  left: var(--react-international-phone-dropdown-left, 0);
+  display: flex;
+  width: 300px;
+  max-height: 200px;
+  flex-direction: column;
+  padding: 4px 0;
+  margin: 0;
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
+  /* box-shadow: var(
+    --react-international-phone-dropdown-shadow,
+    2px 2px 16px rgba(0, 0, 0, 0.25)
+  ); */
+  color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
+  border-color: none;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.bg-neutral {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-n, oklch(var(--n) / var(--tw-bg-opacity)));
+}
+.text-neutral-content {
+  --tw-text-opacity: 1;
+  color: var(--fallback-nc, oklch(var(--nc) / var(--tw-text-opacity)));
+}
