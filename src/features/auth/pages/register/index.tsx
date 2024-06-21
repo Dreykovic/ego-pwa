@@ -7,8 +7,7 @@ import WithAuth from '@/features/auth/components/hocs/with-auth';
 import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
 import CustomPhoneInput from '@/shared/components/input/phone-input';
-
-import { RegisterFormValues, RegisterSchema } from './schema';
+import { RegisterFormValues, RegisterSchema } from '../../types';
 
 const RegisterForm = () => {
   const {

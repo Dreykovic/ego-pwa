@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
-
-import { LoginEmailFormValues, LoginEmailSchema } from './schema';
+import { LoginEmailFormValues, LoginEmailSchema } from '../../types';
 
 const LoginEmailForm = () => {
   const {

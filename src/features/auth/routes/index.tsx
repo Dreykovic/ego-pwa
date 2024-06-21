@@ -8,7 +8,7 @@ const Register = lazy(() => import('@/features/auth/pages/register'));
 const LoginPassword = lazy(
   () => import('@/features/auth/pages/login-password'),
 );
-const Login = lazy(() => import('@/features/auth/pages/login-phone'));
+const Login = lazy(() => import('@/features/auth/pages/login-phone-email'));
 const Otp = lazy(() => import('@/features/auth/pages/otp'));
 const LoginEmail = lazy(() => import('@/features/auth/pages/login-email'));
 const authRoutes: RoutesConfigType = {
@@ -32,6 +32,10 @@ const authRoutes: RoutesConfigType = {
   authOtp: {
     path: '/auth/otp', // the url
     component: <Otp />, // view rendered
+  },
+  any: {
+    path: '*', // the url
+    component: <Login />, // view rendered
   },
 };
 

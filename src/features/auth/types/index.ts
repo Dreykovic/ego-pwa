@@ -1,5 +1,17 @@
 import { z } from 'zod';
 
+export const LoginEmailSchema = z.object({
+  email: z.string().email("L'email est invalide"),
+});
+export const LoginPasswordSchema = z.object({
+  password: z.string().min(1, { message: 'Le mot de passe est obligatoire' }),
+});
+
+export const LoginPhoneSchema = z.object({
+  phoneNumber: z
+    .string()
+    .min(2, { message: 'Le numéro de téléphone est obligatoire' }),
+});
 export const RegisterSchema = z
   .object({
     firstName: z.string().min(2, { message: 'Le prénom est obligatoire' }),
@@ -22,3 +34,9 @@ export const RegisterSchema = z
   });
 
 export type RegisterFormValues = z.infer<typeof RegisterSchema>;
+
+export type LoginPhoneFormValues = z.infer<typeof LoginPhoneSchema>;
+
+export type LoginPasswordFormValues = z.infer<typeof LoginPasswordSchema>;
+
+export type LoginEmailFormValues = z.infer<typeof LoginEmailSchema>;

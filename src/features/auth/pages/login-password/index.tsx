@@ -6,10 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
 
-import { LoginPasswordFormValues, LoginPasswordSchema } from './schema';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/stores';
 import { makeGlobalLogin } from '../../stores/auth-slice';
+import { LoginPasswordFormValues, LoginPasswordSchema } from '../../types';
 
 const LoginPasswordForm = () => {
   const dispatch = useDispatch<AppDispatch>();
