@@ -1,7 +1,7 @@
 import BgParticles from '@/shared/components/bg-particles';
-import GuestPageContent from './public-page-content';
-
 import AuthTitle from '@/shared/components/logo-with-title';
+
+import GuestPageContent from './public-page-content';
 
 const PublicLayout = () => {
   return (

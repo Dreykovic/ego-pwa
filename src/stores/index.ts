@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rightDrawerSlice from '@/shared/components/right-drawer/right-drawer-slice';
-import headerSlice from '@/shared/components/header/header-slice';
 
+import headerSlice from '@/app/layouts/private-layout/header/header-slice';
+import rightDrawerSlice from '@/app/layouts/private-layout/right-sidebar/right-drawer-slice';
+import authReducer from '@/features/auth/stores/auth-slice'
 const combinedReducer = {
   header: headerSlice,
   rightDrawer: rightDrawerSlice,
-  //   modal: modalSlice,
-  //   lead: leadsSlice,
+      auth: authReducer,
+
+
 };
 
 const store = configureStore({

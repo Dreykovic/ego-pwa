@@ -8,9 +8,9 @@ export const RegisterSchema = z
     password: z.string().min(6, {
       message: 'Le mot de passe doit contenir au moins 6 caractères',
     }),
-      phoneNumber: z
-    .string()
-    .min(2, { message: 'Le numéro de téléphone est obligatoire' }),
+    phoneNumber: z
+      .string()
+      .min(2, { message: 'Le numéro de téléphone est obligatoire' }),
     confirmPassword: z.string().min(6, {
       message:
         'La confirmation du mot de passe doit contenir au moins 6 caractères',

@@ -1,9 +1,11 @@
-import CustomPhoneInput from '@/shared/components/input/phone-input';
-import WithAuth from '@/features/auth/components/hocs/with-auth';
-import { LoginPhoneFormValues, LoginPhoneSchema } from './schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+
+import WithAuth from '@/features/auth/components/hocs/with-auth';
+import CustomPhoneInput from '@/shared/components/input/phone-input';
+
+import { LoginPhoneFormValues, LoginPhoneSchema } from './schema';
 const LoginForm = () => {
   const {
     control,
@@ -43,7 +45,7 @@ const LoginForm = () => {
       </div>
       <div className="text-gost flex text-center flex-col mt-2 items-center text-sm py-2">
         <p className="cursor-default">
-          Vous n'aver pas de compte ?
+          Vous n&apos;avez pas de compte ?
           <Link to="/register" className="link link-primary ml-2">
             Créer un compte
           </Link>

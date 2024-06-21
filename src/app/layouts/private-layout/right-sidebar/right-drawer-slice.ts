@@ -7,8 +7,6 @@ export const rightDrawerSlice = createSlice({
     isOpen: false, // right drawer state management for opening closing
     bodyType: '', // right drawer content management
     extraObject: {},
-    isAuth:true,
-    
   },
   reducers: {
     openRightDrawer: (state, action) => {
@@ -25,12 +23,9 @@ export const rightDrawerSlice = createSlice({
       state.header = '';
       state.extraObject = {};
     },
-    setToken: (state, action)=>{
-      state.isAuth = action.payload.token
-    }
   },
 });
 
-export const { openRightDrawer, closeRightDrawer ,setToken} = rightDrawerSlice.actions;
+export const { openRightDrawer, closeRightDrawer } = rightDrawerSlice.actions;
 
 export default rightDrawerSlice.reducer;

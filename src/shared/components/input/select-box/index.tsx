@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import InformationCircleIcon from '@heroicons/react/24/outline/InformationCircleIcon';
+import React, { useState } from 'react';
 import { Select } from 'react-daisyui';
 
 interface Option {

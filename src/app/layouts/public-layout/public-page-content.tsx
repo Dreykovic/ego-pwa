@@ -1,8 +1,8 @@
-import RoutesProvider from '@/app/routes';
-import guestRoutes from '@/app/layouts/public-layout/public-routes';
+import publicRoutes from '@/app/layouts/public-layout/public-routes';
+import AppRoutes from '@/app/routes';
 
 const GuestPageContent: React.FC = () => {
-  return <RoutesProvider routes={guestRoutes}></RoutesProvider>;
+  return <AppRoutes routes={publicRoutes}></AppRoutes>;
 };
 
 export default GuestPageContent;

@@ -13,11 +13,13 @@ const SingleService: React.FC<Props> = ({ title, icon }) => {
       <div className="  grid grid-rows-2 mt-2">
         <button
           type="button"
-          className={`btn btn-square btn-base-200 flex items-center m-auto text-${COLORS[0]}`}
+          className={`btn max-sm:btn-square backdrop-sepia-0 flex items-center m-auto text-${COLORS[0]} lg:w-40 lg:h-24 lg:rounded-xl`}
         >
           {icon}
         </button>
-        <div className="text-base-300 text-center">{title}</div>
+        <div className="text-base-300 text-center text-sm lg:text-lg">
+          {title}
+        </div>
       </div>
     </>
   );

@@ -1,18 +1,19 @@
-import { useNavigate } from 'react-router-dom';
-
 import { KeyIcon } from '@heroicons/react/24/outline';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
-import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { LoginPasswordFormValues, LoginPasswordSchema } from './schema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { AppDispatch } from '@/shared/stores/store';
 import { useDispatch } from 'react-redux';
-import { setToken } from '@/shared/components/right-drawer/right-drawer-slice';
+import { AppDispatch } from '@/stores';
+import { makeGlobalLogin } from '../../stores/auth-slice';
 
 const LoginPasswordForm = () => {
   const dispatch = useDispatch<AppDispatch>();
+
   const {
     control,
     handleSubmit,
@@ -25,7 +26,12 @@ const LoginPasswordForm = () => {
   const onSubmit: SubmitHandler<LoginPasswordFormValues> = (data) => {
     console.log(data);
     console.log('login');
-    dispatch(setToken({ token: true }));
+    dispatch(
+      makeGlobalLogin({
+        token: 'TestMockTOken',
+        user: { firstName: 'Aus', lastName: 'koko', email: 'gogo', id: 'id' },
+      }),
+    );
     navigate('/');
   };
   return (

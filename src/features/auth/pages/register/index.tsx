@@ -1,14 +1,14 @@
-import { KeyIcon, UserIcon } from '@heroicons/react/24/outline';
+import { KeyIcon, UserIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { RegisterFormValues, RegisterSchema } from './schema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from 'react-router-dom';
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
+import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
 import CustomPhoneInput from '@/shared/components/input/phone-input';
+
+import { RegisterFormValues, RegisterSchema } from './schema';
 
 const RegisterForm = () => {
   const {

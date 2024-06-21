@@ -1,25 +1,21 @@
-import React from 'react';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import Logo from '@/assets/images/logo/logo-1.png';
 
-import { NavLink } from 'react-router-dom';
 import menus from './sidebar-menus';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/shared/stores/store';
-import { setToken } from '@/shared/components/right-drawer/right-drawer-slice';
 
 const LeftSidebar: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-
   const close = (): void => {
     const sidebarElement = document.getElementById('left-sidebar-drawer');
     if (sidebarElement) {
       sidebarElement.click();
     }
   };
-  const logout = (): void => {
-    dispatch(setToken({ token: false }));
-  };
+  // const logout = (): void => {
+  //   dispatch(setToken({ token: false }));
+  // };
 
   return (
     <div className="drawer-side z-30">
@@ -47,7 +43,6 @@ const LeftSidebar: React.FC = () => {
                   className={({ isActive }) =>
                     `${isActive ? 'font-semibold  bg-base-200 ' : 'font-normal'}`
                   }
-                  onClick={logout}
                 >
                   {route.icon} {route.name}
                   {location.pathname === route.path ? (

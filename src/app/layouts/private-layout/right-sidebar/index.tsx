@@ -1,10 +1,11 @@
 import XMarkIcon from '@heroicons/react/24/solid/XMarkIcon';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { closeRightDrawer } from './right-drawer-slice';
 import { RIGHT_DRAWER_TYPES } from '@/shared/utils/global-constant-util';
+import { AppDispatch, RootState } from '@/stores';
+
 import NotificationBodyRightDrawer from './notification-body-right-drawer';
-import { AppDispatch, RootState } from '@/shared/stores/store';
+import { closeRightDrawer } from './right-drawer-slice';
 
 function RightSidebar() {
   const { isOpen, bodyType, extraObject, header } = useSelector(

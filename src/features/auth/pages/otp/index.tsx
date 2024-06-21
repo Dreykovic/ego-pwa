@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import OtpInput from 'react-otp-input';
-import WithAuth from '@/features/auth/components/hocs/with-auth';
 import { useNavigate } from 'react-router-dom';
+
+import WithAuth from '@/features/auth/components/hocs/with-auth';
 
 const OtpForm = () => {
   const [otp, setOtp] = useState('');

@@ -3,8 +3,8 @@
 import homeRoutes from '@/features/home/routes';
 import { RoutesConfigType } from '@/shared/types/routes-type';
 
-const appRoutes: RoutesConfigType = {
+const privateRoutes: RoutesConfigType = {
   ...homeRoutes,
 };
 
-export default appRoutes;
+export default privateRoutes;

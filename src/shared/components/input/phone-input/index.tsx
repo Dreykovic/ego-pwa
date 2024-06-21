@@ -1,12 +1,10 @@
-import { PhoneInput} from 'react-international-phone';
-import 'react-international-phone/style.css';
-// import './phone-input.css';
-
 import {
   useController,
   UseControllerProps,
   FieldValues,
 } from 'react-hook-form';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 type CustomTextIconInputProps<T extends FieldValues> = {
   // phone: string;

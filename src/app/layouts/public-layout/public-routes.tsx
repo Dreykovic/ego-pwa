@@ -3,8 +3,8 @@
 import authRoutes from '@/features/auth/routes';
 import { RoutesConfigType } from '@/shared/types/routes-type';
 
-const guestRoutes: RoutesConfigType = {
+const publicRoutes: RoutesConfigType = {
   ...authRoutes,
 };
 
-export default guestRoutes;
+export default publicRoutes;

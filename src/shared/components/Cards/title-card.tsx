@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+
 import Subtitle from '@/shared/components/Typography/subtitle';
 
 interface TitleCardProps {

@@ -1,20 +1,17 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import carouselItems from './carousel-items';
-// Import Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/virtual';
 import 'swiper/css/autoplay';
-// import 'swiper/css/lazy';
-
+import carouselItems from './carousel-items';
 import carouselOptions from './carousel-options';
 
 const HomeCarousel = () => {
   return (
     <Swiper
       {...carouselOptions}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {carouselItems.map((item, index) => {
         return (

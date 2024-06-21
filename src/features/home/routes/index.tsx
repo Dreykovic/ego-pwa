@@ -1,7 +1,8 @@
 // All components mapping with path for internal routes
 
-import { RoutesConfigType } from '@/shared/types/routes-type';
 import { lazy } from 'react';
+
+import { RoutesConfigType } from '@/shared/types/routes-type';
 
 const Home = lazy(() => import('@/features/home'));
 

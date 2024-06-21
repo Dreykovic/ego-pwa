@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/shared/stores/store';
 
-import RoutesProvider from '@/app/routes';
-import appRoutes from '@/app/layouts/private-layout/private-routes';
-import Header from '@/shared/components/header';
+import AppRoutes from '@/app/routes';
+
+import privateRoutes from './private-routes';
+
+import { RootState } from '@/stores';
+import Header from './header';
 
 const PageContent: React.FC = () => {
   const mainContentRef = useRef<HTMLDivElement>(null);
@@ -26,12 +28,8 @@ const PageContent: React.FC = () => {
       <main
         className=" md:pt-4 pt-4 px-6 min-h-screen bg-neutral"
         ref={mainContentRef}
-        // style={{
-        //   backgroundImage: `url(${BgImmg})`,
-        //   backgroundSize: "contain",
-        // }}
       >
-        <RoutesProvider routes={appRoutes} />
+        <AppRoutes routes={privateRoutes} />
       </main>
     </div>
   );

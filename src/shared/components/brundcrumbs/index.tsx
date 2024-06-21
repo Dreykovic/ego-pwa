@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import { HomeModernIcon } from '@heroicons/react/24/outline';
+import React, { ReactNode } from 'react';
 
 type Props = {
   page: string;

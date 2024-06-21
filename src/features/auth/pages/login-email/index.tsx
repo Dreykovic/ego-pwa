@@ -1,10 +1,12 @@
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import WithAuth from '@/features/auth/components/hocs/with-auth';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginEmailFormValues, LoginEmailSchema } from './schema';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+
+import WithAuth from '@/features/auth/components/hocs/with-auth';
+import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
+
+import { LoginEmailFormValues, LoginEmailSchema } from './schema';
 
 const LoginEmailForm = () => {
   const {
