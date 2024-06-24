@@ -1,6 +1,6 @@
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Logo from '@/assets/images/logo/logo-1.png';
 
@@ -28,10 +28,10 @@ const LeftSidebar: React.FC = () => {
           <XMarkIcon className="h-5 inline-block w-5" />
         </button>
         <li className="mb-2 font-semibold text-xl">
-          <a href="/">
+          <Link to="/">
             <img className="mask mask-squircle w-10" src={Logo} alt="ego" />
             Ego
-          </a>
+          </Link>
         </li>
         {menus.map((route, k) => {
           return (

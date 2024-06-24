@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export interface IAuthBottomLonkBlovkProps {
   firstText: string;
   secondText: string;
@@ -19,9 +21,9 @@ export function AuthBottomLinkBlock({
       >
         <p className="cursor-default">
           {props.firstText}
-          <a href={props.to} className="link link-primary ml-2">
+          <Link to={props.to} className="link link-primary ml-2">
             {props.secondText}
-          </a>
+          </Link>
         </p>
       </div>
     </>
