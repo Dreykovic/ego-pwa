@@ -1,6 +1,7 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { AuthPayload, User } from '@/shared/types/api';
 import localStorageUtil from '@/shared/utils/local-storage-utils';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   token: string | null;

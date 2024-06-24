@@ -7,10 +7,10 @@ import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
 import env from '@/shared/config/env';
 
-import { useRecoverEmailMutation } from '../../stores/auth-api';
+import { useRequestResetPasswordMutation } from '../../stores/auth-api';
 import { LoginEmailFormValues, LoginEmailSchema } from '../../types';
 
-const LoginEmail: React.FC = () => {
+const PasswordForgot: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -18,16 +18,17 @@ const LoginEmail: React.FC = () => {
   } = useForm<LoginEmailFormValues>({
     resolver: zodResolver(LoginEmailSchema),
   });
-  const [recoverEmail, { isLoading, error }] = useRecoverEmailMutation();
+  const [requestResetPassword, { isLoading, error }] =
+    useRequestResetPasswordMutation();
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<LoginEmailFormValues> = (data) => {
     console.log(data);
     if (env.appState === 'demo') {
-      navigate(env.appState != 'demo' ? '/auth/otp/:email' : '/auth/otp/');
+      navigate('/auth/password-reset');
       return;
     }
-    recoverEmail(data)
+    requestResetPassword(data)
       .unwrap()
       .then((payload) => console.log('fulfilled', payload))
       .catch((error) => console.error('rejected', error));
@@ -35,20 +36,22 @@ const LoginEmail: React.FC = () => {
   return (
     <>
       <WithAuth
-        title="Ajouter Email"
+        title="Mot de passe oublié"
         formClassNames={'grid grid-cols-1 place-items-center'}
         onSubmit={onSubmit}
         handleSubmit={handleSubmit}
         isLoading={isLoading}
         error={error}
+        submitBtnText="Recevoir le code"
       >
+        {/* TODO: Ajouter un texte de message */}
         <CustomTextIconInput
           icon={<EnvelopeIcon className="w-4 h-4 text-neutral-content" />}
           name="email"
           placeholder="Email"
           className={`${errors.email ? 'input-error' : ''}`}
           control={control}
-          defaultValue="aaa@gmail.com"
+          defaultValue="abalo@gmail.com"
           error={errors.email?.message}
           aria-invalid={errors.email ? 'true' : 'false'}
           type={'email'}
@@ -57,4 +60,4 @@ const LoginEmail: React.FC = () => {
     </>
   );
 };
-export default LoginEmail;
+export default PasswordForgot;

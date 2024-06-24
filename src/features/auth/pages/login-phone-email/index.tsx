@@ -1,21 +1,27 @@
+import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import WithAuth from '@/features/auth/components/hocs/with-auth';
+import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
 import CustomPhoneInput from '@/shared/components/input/phone-input';
+import env from '@/shared/config/env';
+
+import { AuthBottomLinkBlock } from '../../components/ui/auth-bottom-link-block';
+import { useVerifyMutation } from '../../stores/auth-api';
 import {
   LoginEmailFormValues,
   LoginPhoneFormValues,
   LoginPhoneSchema,
   LoginEmailSchema,
+  Identify,
 } from '../../types';
-import { useState } from 'react';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
 
-const LoginForm = () => {
+const Login: React.FC = () => {
   const [loginMode, setLoginMode] = useState<'phone' | 'email'>('phone');
+  const [globalError, setGlobalError] = useState<string>();
 
   const {
     control,
@@ -27,6 +33,7 @@ const LoginForm = () => {
       loginMode === 'phone' ? LoginPhoneSchema : LoginEmailSchema,
     ),
   });
+  const [verify, { isLoading, error }] = useVerifyMutation();
 
   const navigate = useNavigate();
 
@@ -34,21 +41,69 @@ const LoginForm = () => {
     data,
   ) => {
     console.log(data);
-    navigate('/login/email');
+    if (env.appState === 'demo') {
+      navigate('/login/email');
+      return;
+    }
+    let userIdentify: Identify;
+
+    if (loginMode === 'phone' && 'phoneNumber' in data) {
+      userIdentify = { identify: data.phoneNumber };
+    } else if (loginMode === 'email' && 'email' in data) {
+      userIdentify = { identify: data.email };
+    } else {
+      console.error('Invalid login mode or missing data property');
+      return;
+    }
+    verify(userIdentify)
+      .unwrap()
+      .then((payload) => {
+        console.log('fulfilled', payload);
+        switch (payload.status) {
+          case 'success':
+            navigate(`/login/password/${userIdentify.identify}`);
+            break;
+          case 'pending':
+            navigate(`/auth/otp/${payload.content.userEmail.email}`);
+            break;
+
+          default:
+            setGlobalError(payload.content.message);
+
+            break;
+        }
+      })
+      .catch((error) => {
+        console.error('rejected', error);
+        setGlobalError(error?.data?.message);
+      });
   };
 
   const handleModeChange = (mode: 'phone' | 'email') => {
     setLoginMode(mode);
     reset(); // reset form fields and errors when changing mode
   };
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1   /5 m-auto"
+    <WithAuth
+      title="Connexion"
+      formClassNames={'grid grid-cols-1 place-items-center'}
+      onSubmit={onSubmit}
+      handleSubmit={handleSubmit}
+      isLoading={isLoading}
+      error={error}
+      globalErrorMsg={globalError}
+      bottomchildren={
+        <AuthBottomLinkBlock
+          to={'/register'}
+          firstText=" Vous n'avez pas de compte ?"
+          secondText=" Créer un compte"
+        />
+      }
     >
-      <p className="my-2">Se connecter avec: </p>
-      <div className="flex items-center justify-around bg-neutral mb-4">
+      <div className="w-full ">
+        <p className="my-2">Se connecter avec: </p>
+      </div>
+      <div className="flex items-center justify-around bg-transparent mb-4  w-full">
         <div className="form-control">
           <label className="label cursor-pointer">
             <input
@@ -59,9 +114,7 @@ const LoginForm = () => {
               checked={loginMode === 'phone'}
               onChange={() => handleModeChange('phone')}
             />
-            <span className="label-text text-neutral-content mx-2">
-              Contact
-            </span>
+            <span className="label-text text-base-content mx-2">Contact</span>
           </label>
         </div>
         <div className="form-control">
@@ -74,14 +127,14 @@ const LoginForm = () => {
               checked={loginMode === 'email'}
               onChange={() => handleModeChange('email')}
             />
-            <span className="label-text text-neutral-content mx-2">Email</span>
+            <span className="label-text text-base-content mx-2">Email</span>
           </label>
         </div>
       </div>
       {loginMode === 'phone' && (
         <CustomPhoneInput
           name="phoneNumber"
-          className="max-sm:w-3/4 "
+          className={`${(errors as FieldErrors<LoginPhoneFormValues>).phoneNumber ? 'input-error' : ''}`}
           control={control}
           defaultValue=""
           placeholder=""
@@ -98,7 +151,7 @@ const LoginForm = () => {
           icon={<EnvelopeIcon className="w-4 h-4 text-neutral-content" />}
           name="email"
           placeholder="Email"
-          className=""
+          className={`${(errors as FieldErrors<LoginEmailFormValues>).email ? 'input-error' : ''}`}
           control={control}
           defaultValue=""
           error={(errors as FieldErrors<LoginEmailFormValues>).email?.message}
@@ -106,28 +159,6 @@ const LoginForm = () => {
           type="email"
         />
       )}
-
-      <div className="flex justify-center text-lg">
-        <button className="btn btn-neutral px-10 py-2" type="submit">
-          Continuer
-        </button>
-      </div>
-      <div className="text-gost flex text-center flex-col mt-2 items-center text-sm py-2">
-        <p className="cursor-default">
-          Vous n&apos;avez pas de compte ?
-          <Link to="/register" className="link link-primary ml-2">
-            Créer un compte
-          </Link>
-        </p>
-      </div>
-    </form>
-  );
-};
-
-const Login: React.FC = () => {
-  return (
-    <WithAuth title="Connexion">
-      <LoginForm />
     </WithAuth>
   );
 };

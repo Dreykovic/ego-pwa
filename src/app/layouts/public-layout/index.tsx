@@ -8,7 +8,7 @@ const PublicLayout = () => {
     <>
       <BgParticles />
 
-      <div className="w-full h-dvh grid grid-cols-1 xs:grid-rows-min-layout lg:grid-rows-layout place-items-center overflow-y-auto ">
+      <div className="w-full h-dvh grid grid-cols-1 lg:grid-rows-layout max-sm:place-items-center  sm:place-content-center overflow-y-auto ">
         {/* `url(${Logo})` */}
 
         <AuthTitle className={'mt-4'} />

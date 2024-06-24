@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import AppRoutes from '@/app/routes';
-
-import privateRoutes from './private-routes';
-
 import { RootState } from '@/stores';
+
 import Header from './header';
+import privateRoutes from './private-routes';
 
 const PageContent: React.FC = () => {
   const mainContentRef = useRef<HTMLDivElement>(null);

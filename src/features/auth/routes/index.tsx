@@ -2,7 +2,11 @@
 
 import { lazy } from 'react';
 
+import env from '@/shared/config/env';
 import { RoutesConfigType } from '@/shared/types/routes-type';
+
+import PasswordForgot from '../pages/password-forgot';
+import PasswordReset from '../pages/password-reset';
 
 const Register = lazy(() => import('@/features/auth/pages/register'));
 const LoginPassword = lazy(
@@ -22,7 +26,8 @@ const authRoutes: RoutesConfigType = {
     component: <Register />, // view rendered
   },
   loginPassword: {
-    path: '/login/password', // the url
+    path:
+      env.appState != 'demo' ? '/login/password/:identify' : '/login/password', // the url
     component: <LoginPassword />, // view rendered
   },
   loginEmail: {
@@ -30,8 +35,16 @@ const authRoutes: RoutesConfigType = {
     component: <LoginEmail />, // view rendered
   },
   authOtp: {
-    path: '/auth/otp', // the url
+    path: env.appState != 'demo' ? '/auth/otp/:email' : '/auth/otp/', // the url
     component: <Otp />, // view rendered
+  },
+  passwordForgot: {
+    path: '/auth/password-forgot', // the url
+    component: <PasswordForgot />, // view rendered
+  },
+  passwordReset: {
+    path: '/auth/password-reset', // the url
+    component: <PasswordReset />, // view rendered
   },
   any: {
     path: '*', // the url

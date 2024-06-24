@@ -1,6 +1,7 @@
-import HeaderAvatar from './header-avatar';
 import Navigations from '../navigations';
+
 import HeaderActions from './header-actions';
+import HeaderAvatar from './header-avatar';
 
 function Header() {
   return (

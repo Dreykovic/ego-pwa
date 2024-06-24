@@ -7,9 +7,12 @@ import WithAuth from '@/features/auth/components/hocs/with-auth';
 import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
 import CustomPhoneInput from '@/shared/components/input/phone-input';
+import env from '@/shared/config/env';
+
+import { useRegisterMutation } from '../../stores/auth-api';
 import { RegisterFormValues, RegisterSchema } from '../../types';
 
-const RegisterForm = () => {
+const Register: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -18,110 +21,113 @@ const RegisterForm = () => {
     resolver: zodResolver(RegisterSchema),
   });
   const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<RegisterFormValues> = (data) => {
+  const [register, { isLoading, error }] = useRegisterMutation();
+  const onSubmit: SubmitHandler<RegisterFormValues> = async (data) => {
     console.log(data);
-    navigate('/auth/otp');
+    if (env.appState === 'demo') {
+      navigate('/auth/otp');
+      return;
+    }
+    // const response = await register(data).unwrap();
+    // alert(response);
+    register(data)
+      .unwrap()
+      .then((payload) => console.log('fulfilled', payload))
+      .catch((error) => console.error('rejected', error));
+    // if (response?.success === true) {
+    //   navigate('/auth/otp');
+    // }
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1 max-sm:w-3/4  m-auto"
-    >
-      <CustomTextIconInput<RegisterFormValues>
-        name="lastName"
-        control={control}
-        defaultValue="nom"
-        className=""
-        icon={<UserIcon className="w-4 h-4 text-neutral-content" />}
-        type="text"
-        placeholder="Nom"
-        error={errors.lastName?.message}
-        aria-invalid={errors.lastName ? 'true' : 'false'}
-      />
-
-      <CustomTextIconInput<RegisterFormValues>
-        name="firstName"
-        control={control}
-        defaultValue="prenom"
-        className=""
-        icon={<UserIcon className="w-4 h-4 text-neutral-content" />}
-        type="text"
-        placeholder="Prénom"
-        error={errors.firstName?.message}
-        aria-invalid={errors.firstName ? 'true' : 'false'}
-      />
-
-      <CustomPhoneInput
-        name="phoneNumber"
-        className="max-sm:w-3/4"
-        control={control}
-        defaultValue=""
-        placeholder=""
-        error={errors.phoneNumber?.message}
-        aria-invalid={errors.phoneNumber ? 'true' : 'false'}
-      />
-
-      <CustomTextIconInput<RegisterFormValues>
-        name="email"
-        control={control}
-        defaultValue="aaa@exemple.com"
-        className=""
-        icon={<EnvelopeIcon className="w-4 h-4 text-neutral-content" />}
-        type="email"
-        placeholder="Adresse mail"
-        error={errors.email?.message}
-        aria-invalid={errors.email ? 'true' : 'false'}
-      />
-      <CustomTextIconInput<RegisterFormValues>
-        name="password"
-        control={control}
-        defaultValue="cococo"
-        className=""
-        icon={<KeyIcon className="w-4 h-4 text-neutral-content" />}
-        type="password"
-        placeholder="Mot de passe"
-        error={errors.password?.message}
-        aria-invalid={errors.password ? 'true' : 'false'}
-      />
-      <CustomTextIconInput<RegisterFormValues>
-        name="confirmPassword"
-        control={control}
-        defaultValue="cococo"
-        className=""
-        icon={<KeyIcon className="w-4 h-4 text-neutral-content" />}
-        type="password"
-        placeholder="Confirmer le mot de passe"
-        error={errors.confirmPassword?.message}
-        aria-invalid={errors.confirmPassword ? 'true' : 'false'}
-      />
-
-      <AuthBottomLinkBlock
-        to={'/login/email'}
-        firstText="En vous connectant vous acceptez la"
-        secondText="politique de confidentialité"
-      />
-      <div className="my-6 flex justify-center ">
-        {/* <Link to={"/login/email"}> */}
-        <button className="btn btn-neutral px-10 py-2" type="submit">
-          Continuer
-        </button>
-        {/* </Link> */}
-      </div>
-
-      <AuthBottomLinkBlock
-        to={'/login'}
-        firstText="Déja un compte ?"
-        secondText="Se connecter"
-      />
-    </form>
-  );
-};
-const Register: React.FC = () => {
-  return (
     <>
-      <WithAuth title="Créer un compte">
-        <RegisterForm />
+      <WithAuth
+        title="Créer un compte"
+        formClassNames={'grid grid-cols-1 place-items-center'}
+        onSubmit={onSubmit}
+        handleSubmit={handleSubmit}
+        isLoading={isLoading}
+        error={error}
+        bottomchildren={
+          <AuthBottomLinkBlock
+            to={'/login'}
+            firstText="Déja un compte ?"
+            secondText="Se connecter"
+          />
+        }
+      >
+        <CustomTextIconInput<RegisterFormValues>
+          name="lastName"
+          control={control}
+          defaultValue="nom"
+          className={`${errors.lastName ? 'input-error' : ''}`}
+          icon={<UserIcon className="w-4 h-4 text-neutral-content" />}
+          type="text"
+          placeholder="Nom"
+          error={errors.lastName?.message}
+          aria-invalid={errors.lastName ? 'true' : 'false'}
+        />
+
+        <CustomTextIconInput<RegisterFormValues>
+          name="firstName"
+          control={control}
+          defaultValue="prenom"
+          className={`${errors.firstName ? 'input-error' : ''}`}
+          icon={<UserIcon className="w-4 h-4 text-neutral-content" />}
+          type="text"
+          placeholder="Prénom"
+          error={errors.firstName?.message}
+          aria-invalid={errors.firstName ? 'true' : 'false'}
+        />
+
+        <CustomPhoneInput
+          name="phoneNumber"
+          className={`${errors.email ? 'input-error' : ''}`}
+          control={control}
+          defaultValue=""
+          placeholder=""
+          error={errors.phoneNumber?.message}
+          aria-invalid={errors.phoneNumber ? 'true' : 'false'}
+        />
+
+        <CustomTextIconInput<RegisterFormValues>
+          name="email"
+          control={control}
+          defaultValue="audrey@gmail.com"
+          className={`${errors.email ? 'input-error' : ''}`}
+          icon={<EnvelopeIcon className="w-4 h-4 text-neutral-content" />}
+          type="email"
+          placeholder="Adresse mail"
+          error={errors.email?.message}
+          aria-invalid={errors.email ? 'true' : 'false'}
+        />
+        <CustomTextIconInput<RegisterFormValues>
+          name="password"
+          control={control}
+          defaultValue="cococo"
+          className={`${errors.password ? 'input-error' : ''}`}
+          icon={<KeyIcon className="w-4 h-4 text-neutral-content" />}
+          type="password"
+          placeholder="Mot de passe"
+          error={errors.password?.message}
+          aria-invalid={errors.password ? 'true' : 'false'}
+        />
+        <CustomTextIconInput<RegisterFormValues>
+          name="confirmPassword"
+          control={control}
+          defaultValue="cococo"
+          className={`${errors.confirmPassword ? 'input-error' : ''}`}
+          icon={<KeyIcon className="w-4 h-4 text-neutral-content" />}
+          type="password"
+          placeholder="Confirmer le mot de passe"
+          error={errors.confirmPassword?.message}
+          aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+        />
+
+        <AuthBottomLinkBlock
+          to={'/login/email'}
+          firstText="En vous connectant vous acceptez la"
+          secondText="politique de confidentialité"
+        />
       </WithAuth>
     </>
   );

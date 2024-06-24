@@ -72,7 +72,7 @@ export default {
 
           error: "#ff0000",
 
-          "error-content": "#160000",
+          "error-content": "#ffffff",
         },
       },
     ],

@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
+
 import { NavType } from '@/shared/types/routes-type';
 
-import { Link } from 'react-router-dom';
 type Props = {
   navs: NavType[];
 };

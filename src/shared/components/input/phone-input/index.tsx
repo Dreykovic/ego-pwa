@@ -5,7 +5,7 @@ import {
 } from 'react-hook-form';
 import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
-
+import './phone-input.css';
 type CustomTextIconInputProps<T extends FieldValues> = {
   // phone: string;
   // setPhone: (phone: string) => void;
@@ -18,21 +18,32 @@ const CustomPhoneInput = <T extends FieldValues>(
   props: CustomTextIconInputProps<T>,
 ) => {
   const { field } = useController(props);
+  /**
+   *     <div className={'mb-4  flew flex-col items-center' + props.className}>
+      <label className="input input-bordered lg:h-[60px] flex items-center gap-4 bg-neutral w-full lg:text-lg">
+   */
   return (
-    <div className={'mb-4 flew flex-col items-center' + props.className}>
-      <PhoneInput
-        defaultCountry="tg"
-        {...field}
+    <div
+      className={
+        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[270px] flew flex-col items-center justify-center m-auto'
+      }
+    >
+      <label
         className={
-          'input input-bordered lg:h-[60px] flex items-center gap-4 bg-neutral w-full lg:text-lg' +
+          'input input-bordered input-accent lg:h-[60px] flex items-center gap-4 bg-neutral w-full lg:text-lg ' +
           props.className
         }
-        inputClassName="grow text-neutral-content"
-        placeholder={props.placeholder}
-      />
-      <div className="text-md mt-1 bg-neutral">
+      >
+        <PhoneInput
+          defaultCountry="tg"
+          {...field}
+          inputClassName=" text-neutral-content flex-grow"
+          placeholder={props.placeholder}
+        />
+      </label>
+      <div className="text-md mt-1 bg-slate-300">
         {props.error && (
-          <p role="alert" className="text-error">
+          <p role="alert" className="text-error text-center">
             {props.error}
           </p>
         )}

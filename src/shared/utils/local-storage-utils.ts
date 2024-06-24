@@ -1,5 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
+
 import { User } from '@/shared/types/api';
+
 import { LOCAL_STORAGE_KEYS } from './global-constant-util';
 
 const localStorageUtil = (() => {

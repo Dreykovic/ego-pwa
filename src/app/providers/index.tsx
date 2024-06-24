@@ -1,9 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import PrivateLayout from '@/app/layouts/private-layout';
 import PublicLayout from '@/app/layouts/public-layout';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/stores';
 
 const AppProvider: React.FC = () => {

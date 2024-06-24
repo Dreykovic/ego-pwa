@@ -3,7 +3,7 @@
 // with the backend instead of manually writing them out
 
 export type BaseEntity = {
-  id: string;
+  // id: string;
   // createdAt: number;
 };
 
@@ -12,9 +12,10 @@ export type Entity<T> = {
 } & BaseEntity;
 
 export type User = Entity<{
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   email: string;
+  phoneNumber: string;
 }>;
 
 export type AuthPayload = {
