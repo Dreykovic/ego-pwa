@@ -10,7 +10,7 @@ import CustomPhoneInput from '@/shared/components/input/phone-input';
 import env from '@/shared/config/env';
 
 import { useRegisterMutation } from '../../stores/auth-api';
-import { RegisterFormValues, RegisterSchema } from '../../types';
+import { FormValues, RegisterFormValues, RegisterSchema } from '../../types';
 
 const Register: React.FC = () => {
   const {
@@ -30,9 +30,21 @@ const Register: React.FC = () => {
     }
     // const response = await register(data).unwrap();
     // alert(response);
-    register(data)
+    const userRegisterData: FormValues = {
+      firstname: data.firstName,
+      lastname: data.lastName,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+      password: data.password,
+    };
+    console.log(userRegisterData);
+
+    register(userRegisterData)
       .unwrap()
-      .then((payload) => console.log('fulfilled', payload))
+      .then((payload) => {
+        console.log('fulfilled', payload);
+        // navigate(`/auth/otp/${ }`)
+      })
       .catch((error) => console.error('rejected', error));
     // if (response?.success === true) {
     //   navigate('/auth/otp');

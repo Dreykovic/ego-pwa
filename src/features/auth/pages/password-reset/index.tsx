@@ -1,16 +1,22 @@
 import { KeyIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
 import env from '@/shared/config/env';
 
 import { useResetPasswordMutation } from '../../stores/auth-api';
-import { PasswordResetFormValues, PasswordResetSchema } from '../../types';
+import {
+  FormValues,
+  PasswordResetFormValues,
+  PasswordResetSchema,
+} from '../../types';
 
 const PasswordReset: React.FC = () => {
+  const { token } = useParams();
+
   const {
     control,
     handleSubmit,
@@ -21,15 +27,34 @@ const PasswordReset: React.FC = () => {
   const navigate = useNavigate();
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
   const onSubmit: SubmitHandler<PasswordResetFormValues> = async (data) => {
-    console.log(data);
+    // TODO: Enregistrer l'adresse du front end dans le en du back
+    // console.log(data);
     if (env.appState === 'demo') {
-      navigate('/auth/otp');
+      navigate('/login');
       return;
     }
-    resetPassword(data)
+    if (!token && env.appState != 'demo') {
+      navigate('/login');
+      return;
+    }
+    const userResetPasswordData: FormValues = {
+      token: token as string,
+      newPassword: data.password,
+    };
+    console.log(userResetPasswordData);
+
+    resetPassword(userResetPasswordData)
       .unwrap()
-      .then((payload) => console.log('fulfilled', payload))
-      .catch((error) => console.error('rejected', error));
+      .then((payload) => {
+        console.log('fulfilled', payload);
+      })
+      .catch((error) => {
+        console.error('rejected', error);
+        if (error.data.content.code === 'INVALID_TOKEN') {
+          // TODO: Avec u message pour le metttre dans le composant suivant
+          navigate('/auth/password-forgot');
+        }
+      });
   };
   return (
     <>

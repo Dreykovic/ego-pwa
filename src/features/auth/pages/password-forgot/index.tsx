@@ -9,8 +9,13 @@ import env from '@/shared/config/env';
 
 import { useRequestResetPasswordMutation } from '../../stores/auth-api';
 import { LoginEmailFormValues, LoginEmailSchema } from '../../types';
+import { useState } from 'react';
+import SuccessAlert from '../../components/ui/success-alert';
 
 const PasswordForgot: React.FC = () => {
+  const [globalSuccess, setGlobalSuccess] = useState<string>();
+  const [globalError, setGlobalError] = useState<string>();
+
   const {
     control,
     handleSubmit,
@@ -18,7 +23,7 @@ const PasswordForgot: React.FC = () => {
   } = useForm<LoginEmailFormValues>({
     resolver: zodResolver(LoginEmailSchema),
   });
-  const [requestResetPassword, { isLoading, error }] =
+  const [requestResetPassword, { isLoading, error, isSuccess }] =
     useRequestResetPasswordMutation();
   const navigate = useNavigate();
 
@@ -30,8 +35,17 @@ const PasswordForgot: React.FC = () => {
     }
     requestResetPassword(data)
       .unwrap()
-      .then((payload) => console.log('fulfilled', payload))
-      .catch((error) => console.error('rejected', error));
+      .then((payload) => {
+        console.log('fulfilled', payload);
+        if (payload.status === 'success') {
+          // navigate(`/auth/password/${data.email}`);
+          setGlobalSuccess(payload.content.message);
+        }
+      })
+      .catch((error) => {
+        console.error('rejected', error);
+        setGlobalError(error.data.content.message);
+      });
   };
   return (
     <>
@@ -43,8 +57,10 @@ const PasswordForgot: React.FC = () => {
         isLoading={isLoading}
         error={error}
         submitBtnText="Recevoir le code"
+        globalErrorMsg={globalError}
       >
         {/* TODO: Ajouter un texte de message */}
+        {isSuccess && <SuccessAlert message={globalSuccess} />}
         <CustomTextIconInput
           icon={<EnvelopeIcon className="w-4 h-4 text-neutral-content" />}
           name="email"

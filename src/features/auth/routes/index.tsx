@@ -43,7 +43,10 @@ const authRoutes: RoutesConfigType = {
     component: <PasswordForgot />, // view rendered
   },
   passwordReset: {
-    path: '/auth/password-reset', // the url
+    path:
+      env.appState != 'demo'
+        ? '/auth/password-reset/:token'
+        : '/auth/password-reset', // the url
     component: <PasswordReset />, // view rendered
   },
   any: {

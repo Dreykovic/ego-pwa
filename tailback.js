@@ -64,7 +64,7 @@ export default {
 
           success: "#44a840",
 
-          "success-content": "#ffffff",
+          "success-content": "#020a01",
 
           warning: "#ff5522",
 
