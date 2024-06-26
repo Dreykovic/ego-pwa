@@ -6,9 +6,10 @@ import {
 
 import homeHistoryData from './home-history-data';
 import './style.css';
+
 const HomeHistory = () => {
   return (
-    <ul className="timeline timeline-vertical overflow-y-auto h-full">
+    <ul className={`timeline timeline-vertical overflow-y-auto h-full`}>
       {homeHistoryData.map((historyItem, k) => {
         const statusColor =
           historyItem.status === 'Failed' ? 'error' : 'success';

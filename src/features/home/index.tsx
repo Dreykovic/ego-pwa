@@ -32,7 +32,10 @@ const Home: React.FC = () => {
           <Subtitle className="my-2 text-base-300 shadow-md">Services</Subtitle>
           <Services />
         </div>
-        <div className="w-full max-sm:border-t-2 max-sm:border-l-0 md:border-t-2 md:border-l-0 lg:border-t-0 lg:border-l-2 border-base-300 pl-3  overflow-y-hidden h-full pt-3">
+        <div
+          className={`w-full max-sm:border-t-2 max-sm:border-l-0 md:border-t-2 md:border-l-0 lg:border-t-0 lg:border-l-2 border-base-300 pl-3  overflow-y-hidden lg:h-full pt-3`}
+          style={width < 1024 ? { height: `${(3 * height) / 5}px` } : {}}
+        >
           <Subtitle className="my-2 text-base-300 shadow-md">
             Historique
           </Subtitle>

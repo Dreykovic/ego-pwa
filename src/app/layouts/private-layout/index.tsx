@@ -6,8 +6,8 @@ function PrivateLayout() {
   return (
     <>
       {/* Left drawer - containing page content and side bar (always open) */}
-      <div className="flex items-center justify-center w-screen h-screen bg-base-300">
-        <div className="w-full max-w-[1900px] lg:h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:overflow-hidden bg-neutral lg:border-[10px] border-base-300">
+      <div className="lg:flex lg:items-center lg:justify-center lg:w-screen lg:h-screen bg-base-300">
+        <div className="w-full max-w-[1900px] lg:h-full absolute max-lg:top-0 max-lg:left-0 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:overflow-hidden bg-neutral lg:border-[10px] border-base-300">
           <PageContent />
         </div>
       </div>
