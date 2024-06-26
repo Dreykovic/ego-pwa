@@ -1,26 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { NavType } from '@/shared/types/routes-type';
+import Title from '@/shared/components/Typography/title';
+import { RootState } from '@/stores';
 
-type Props = {
-  navs: NavType[];
-};
-export default function HeaderNavs(props: Props) {
+export default function HeaderNavs() {
+  const { pageTitle } = useSelector((state: RootState) => state.header);
   return (
     <ul className="menu hidden  lg:menu-horizontal rounded-box">
-      {props.navs.map((nav, k) => {
-        return (
-          <li key={k}>
-            <Link
-              to={nav.path}
-              className={nav.label === 'home' ? 'active text-primary' : ''}
-            >
-              {nav.icon}
-              {nav.label}
-            </Link>
-          </li>
-        );
-      })}
+      <Title className="">{pageTitle}</Title>
     </ul>
   );
 }

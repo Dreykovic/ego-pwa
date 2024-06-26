@@ -25,7 +25,7 @@ const CustomPhoneInput = <T extends FieldValues>(
   return (
     <div
       className={
-        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[270px] flew flex-col items-center justify-center m-auto'
+        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[300px] flew flex-col items-center justify-center m-auto'
       }
     >
       <label
@@ -41,9 +41,10 @@ const CustomPhoneInput = <T extends FieldValues>(
           placeholder={props.placeholder}
         />
       </label>
-      <div className="text-md mt-1 bg-slate-300">
+      <div className="text-md mt-1 ">
+        {/* TODO: Géré l'uniformité avec les tect input */}
         {props.error && (
-          <p role="alert" className="text-error text-center">
+          <p role="alert" className="text-red-400 text-center">
             {props.error}
           </p>
         )}

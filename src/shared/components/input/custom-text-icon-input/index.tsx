@@ -38,9 +38,10 @@ const CustomTextIconInput = <T extends FieldValues>(
   return (
     <div
       className={
-        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[270px] flew flex-col items-center justify-center m-auto '
+        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[300px] flew flex-col items-center justify-center m-auto '
       }
     >
+      {/* // TODO: Gérer le border des input quand la validation est vbonne */}
       <label
         className={
           'input input-bordered lg:h-[60px] flex items-center  gap-2 bg-neutral w-full lg:text-lg ' +
@@ -68,10 +69,9 @@ const CustomTextIconInput = <T extends FieldValues>(
           </div>
         )}
       </label>
-
-      <div className="text-md mt-1  w-full bg-slate-300">
+      <div className="text-md mt-3  w-full ">
         {props.error && (
-          <p role="alert" className="text-error text-center">
+          <p role="alert" className="text-red-400 text-center">
             {props.error}
           </p>
         )}

@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary fallback={<div>Something went wrong</div>}>
-      <AppProvider />;
+      <AppProvider />
     </ErrorBoundary>
   );
 };

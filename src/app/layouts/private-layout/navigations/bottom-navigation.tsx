@@ -5,7 +5,7 @@ type Props = {
 };
 const BottomNavigation = (props: Props) => {
   return (
-    <div className="btm-nav lg:hidden">
+    <div className="btm-nav lg:hidden bg-base-300">
       {props.navs.map((nav, k) => {
         return (
           <button

@@ -22,12 +22,9 @@ const PageContent: React.FC = () => {
   }, [pageTitle]);
 
   return (
-    <div className="drawer-content flex flex-col">
+    <div className="flex flex-col h-full relative">
       <Header />
-      <main
-        className=" md:pt-4 pt-4 px-6 min-h-screen bg-neutral"
-        ref={mainContentRef}
-      >
+      <main className=" md:pt-4 pt-4 px-6  bg-neutral" ref={mainContentRef}>
         <AppRoutes routes={privateRoutes} />
       </main>
     </div>

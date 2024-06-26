@@ -1,5 +1,6 @@
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,10 +8,9 @@ import WithAuth from '@/features/auth/components/hocs/with-auth';
 import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
 import env from '@/shared/config/env';
 
+import SuccessAlert from '../../components/ui/success-alert';
 import { useRequestResetPasswordMutation } from '../../stores/auth-api';
 import { LoginEmailFormValues, LoginEmailSchema } from '../../types';
-import { useState } from 'react';
-import SuccessAlert from '../../components/ui/success-alert';
 
 const PasswordForgot: React.FC = () => {
   const [globalSuccess, setGlobalSuccess] = useState<string>();

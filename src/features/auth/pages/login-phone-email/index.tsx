@@ -100,7 +100,7 @@ const Login: React.FC = () => {
         />
       }
     >
-      <div className="w-full ">
+      <div className="w-full text-center">
         <p className="my-2">Se connecter avec: </p>
       </div>
       <div className="flex items-center justify-around bg-transparent mb-4  w-full">

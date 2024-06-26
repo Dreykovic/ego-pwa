@@ -2,7 +2,7 @@ import CircleStackIcon from '@heroicons/react/24/outline/CircleStackIcon';
 import CreditCardIcon from '@heroicons/react/24/outline/CreditCardIcon';
 import UserGroupIcon from '@heroicons/react/24/outline/UserGroupIcon';
 import UsersIcon from '@heroicons/react/24/outline/UsersIcon';
-const servicesIconsClassNames = 'w-6 h-6 lg:w-12 lg:h-12';
+const servicesIconsClassNames = 'w-6 h-6 md:w-12 md:h-12 lg:w-12 lg:h-12';
 const servicesData = [
   {
     title: 'Transferts',
@@ -15,14 +15,72 @@ const servicesData = [
     icon: <CreditCardIcon className={servicesIconsClassNames} />,
   },
   {
-    title: 'Transferts',
+    title: 'Airtime',
 
-    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
   },
   {
     title: 'Airtime',
 
     icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Airtime',
+
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+
+  {
+    title: 'Airtime',
+
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+
+  {
+    title: 'Airtime',
+
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Airtime',
+
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Airtime',
+
+    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+  },
+
+  {
+    title: 'Transfert internationnal',
+
+    icon: <CircleStackIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'USSD',
+
+    icon: <UsersIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transfert internationnal',
+
+    icon: <CircleStackIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'USSD',
+
+    icon: <UsersIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transfert internationnal',
+
+    icon: <CircleStackIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'USSD',
+
+    icon: <UsersIcon className={servicesIconsClassNames} />,
   },
   {
     title: 'Transfert internationnal',

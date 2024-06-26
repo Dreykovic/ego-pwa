@@ -11,7 +11,7 @@ export default function Navigations(props: IAppProps) {
     case 'bottom':
       return <BottomNavigation navs={navs} />;
     case 'header':
-      return <HeaderNavs navs={navs} />;
+      return <HeaderNavs />;
 
     default:
       break;
