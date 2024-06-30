@@ -21,6 +21,7 @@ export default {
         'sm-layout': '100px minmax(500px, 500px)',
         'md-layout': '100px minmax(500px, 500px)',
         'min-layout': '100px minmax(500px, 500px)',
+        'content-layout': 'minmax(20px, 64px) repeat(9, 1fr)',
       }
     },
     // screens: {

@@ -4,7 +4,9 @@ export const LoginEmailSchema = z.object({
   email: z.string().email("L'email est invalide"),
 });
 export const LoginPasswordSchema = z.object({
-  password: z.string().min(4, { message: 'Le mot de passe est obligatoire' }),
+  password: z
+    .string()
+    .min(4, { message: 'Le mot de passe doit contenir au moins 4 caractères' }),
 });
 
 export const LoginPhoneSchema = z.object({
@@ -23,6 +25,7 @@ export const RegisterSchema = z
     password: z.string().min(4, {
       message: 'Le mot de passe doit contenir au moins 4 caractères',
     }),
+    // TODO: Rendre la validation de tel dinamique
     phoneNumber: z
       .string()
       .regex(
@@ -39,7 +42,7 @@ export const RegisterSchema = z
     path: ['confirmPassword'], // path of error
   });
 export const OtpSchema = z.object({
-  otp: z.string().min(6, { message: "L'otp doit contenir 4 caractères" }),
+  otp: z.string().min(6, { message: "L'otp doit contenir 6 caractères" }),
 });
 
 export const PasswordResetSchema = z

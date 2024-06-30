@@ -58,7 +58,7 @@ const OtpInput = <T extends FieldValues>(props: OtpInputProps<T>) => {
       </div>
       <div className="text-md mt-1 w-full">
         {props.error && (
-          <p role="alert" className="text-error text-center">
+          <p role="alert" className="text-red-400 text-center">
             {props.error}
           </p>
         )}

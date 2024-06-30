@@ -5,7 +5,7 @@ import HeaderAvatar from './header-avatar';
 
 function Header() {
   return (
-    <div className="navbar  bg-base-200 sticky lg:static top-0 left-0  z-10 shadow-md rounded-b-3xl">
+    <div className="navbar  bg-base-200 sticky lg:hidden lg:static right-0 top-0 bottom-0  z-10 shadow-md rounded-b-3xl">
       {/* Menu toogle for mobile view or small screen */}
       <div className="max-lg:flex-none  lg:navbar-start">
         <HeaderAvatar />

@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       <HomeCarousel />
 
       <div
-        className={`grid max-sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 relative mt-6 bg-neutral`}
+        className={`grid max-sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 relative mt-6 bg-neutral px-3`}
         ref={ref}
         style={width >= 1024 ? { height: `${contentHeight}px` } : {}}
       >
