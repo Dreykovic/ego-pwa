@@ -26,22 +26,24 @@ const PageContent: React.FC = () => {
   }, [pageTitle]);
 
   return (
-    <div
-      className="h-full lg:grid  relative w-full"
-      style={
-        width >= 1024
-          ? { gridTemplateColumns: 'minmax(60px, 70px) repeat(9, 1fr)' }
-          : {}
-      }
-    >
-      <Header />
-      <LeftMenu className="  lg:col-span-1" />
-      <main
-        className=" md:pt-4 pt-4 px-6  lg:bg-base-100 lg:col-span-9 "
-        ref={mainContentRef}
+    <div>
+      <div
+        className="h-full lg:grid  relative w-full"
+        style={
+          width >= 1024
+            ? { gridTemplateColumns: 'minmax(60px, 70px) repeat(9, 1fr)' }
+            : {}
+        }
       >
-        <AppRoutes routes={privateRoutes} />
-      </main>
+        <LeftMenu className=" lg:col-span-1" />
+        <main className="lg:bg-base-100 lg:col-span-9 " ref={mainContentRef}>
+          <Header />
+
+          <div className="mx-4">
+            <AppRoutes routes={privateRoutes} />
+          </div>
+        </main>
+      </div>
     </div>
   );
 };

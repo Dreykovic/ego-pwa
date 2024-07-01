@@ -7,15 +7,17 @@ import WithAuth from '@/features/auth/components/hocs/with-auth';
 import OtpInput from '@/shared/components/input/otp-input';
 import env from '@/shared/config/env';
 
+import SuccessAlert from '../../components/ui/success-alert';
 import {
   useResendOtpMutation,
   useVerifyOtpMutation,
 } from '../../stores/auth-api';
-import { OtpFormValues, OtpSchema } from '../../types';
+import { FormValues, OtpFormValues, OtpSchema } from '../../types';
 
 const Otp: React.FC = () => {
   const { email } = useParams();
   const [globalError, setGlobalError] = useState<string>();
+  const [globalSuccess, setGlobalSuccess] = useState<string>();
 
   const {
     control,
@@ -26,7 +28,7 @@ const Otp: React.FC = () => {
   });
   const [verifyOtp, { isLoading: isVerifying, error: verifyError }] =
     useVerifyOtpMutation();
-  const [resendOtp, { isLoading: isResending, error: resendError }] =
+  const [resendOtp, { isLoading: isResending, error: resendError, isSuccess }] =
     useResendOtpMutation();
 
   const navigate = useNavigate();
@@ -43,15 +45,39 @@ const Otp: React.FC = () => {
       navigate('/login');
       return;
     }
-    verifyOtp(data)
+
+    const userOtpVerify: FormValues = {
+      email: email as string,
+      otp: data.otp,
+    };
+    verifyOtp(userOtpVerify)
       .unwrap()
       .then((payload) => {
         console.log('fulfilled', payload);
-        // Navigate to the next step or dashboard after successful OTP verification
+        switch (payload.content.code) {
+          case 'OTP_VERIFIED':
+            navigate(`/login/password/${userOtpVerify.email}`);
+            break;
+
+          default:
+            setGlobalError(payload.content.message);
+
+            break;
+        }
       })
       .catch((error) => {
         console.error('rejected', error);
+        switch (error.data?.content?.code) {
+          case 'INVALID_OTP':
+            setGlobalError(error?.data?.message);
 
+            return;
+            break;
+
+          default:
+            return;
+            break;
+        }
         // TODO:
         setGlobalError('');
       });
@@ -61,10 +87,13 @@ const Otp: React.FC = () => {
     if (!email) return;
     resendOtp({ email })
       .unwrap()
-      .then((payload) => console.log('OTP resent', payload))
+      .then((payload) => {
+        console.log('OTP resent', payload);
+        setGlobalSuccess(payload.message);
+      })
       .catch((error) => {
         console.error('resend OTP failed', error);
-        setGlobalError('ok');
+        setGlobalError(error.message);
       });
   };
 
@@ -79,9 +108,12 @@ const Otp: React.FC = () => {
       error={verifyError || resendError}
       submitBtnText="Envoyer"
     >
+      {isSuccess && <SuccessAlert message={globalSuccess} />}
+
       <div className="w-full ">
         <p className="m-3 text-center">
-          Un code de confrmation vous a été envoyé sur votre adresse email
+          Veuillez saisir le code de confrmation qui vous a été envoyé sur votre
+          adresse email {email ?? ''}
         </p>
       </div>
       <OtpInput

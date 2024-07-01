@@ -46,7 +46,6 @@ const Login: React.FC = () => {
       return;
     }
     let userIdentify: Identify;
-
     if (loginMode === 'phone' && 'phoneNumber' in data) {
       userIdentify = { identify: data.phoneNumber };
     } else if (loginMode === 'email' && 'email' in data) {
@@ -59,14 +58,20 @@ const Login: React.FC = () => {
       .unwrap()
       .then((payload) => {
         console.log('fulfilled', payload);
-        switch (payload.status) {
-          case 'success':
+        switch (payload.content.code) {
+          case 'ACCOUNT_VERIFIED_BY_PHONE':
             navigate(`/login/password/${userIdentify.identify}`);
             break;
-          case 'pending':
-            navigate(`/auth/otp/${payload.content.userEmail.email}`);
+          case 'ACCOUNT_VERIFY_BY_EMAIL':
+            navigate(`/login/password/${userIdentify.identify}`);
             break;
 
+          case 'EMAIL_REQUIRED':
+            navigate(`/login/email/${userIdentify.identify}`);
+            break;
+          case 'OTP_SUSSCESSFULLY_SEND':
+            navigate(`/auth/otp/${payload.content.userEmail}`);
+            break;
           default:
             setGlobalError(payload.content.message);
 
@@ -75,6 +80,17 @@ const Login: React.FC = () => {
       })
       .catch((error) => {
         console.error('rejected', error);
+        switch (error.data?.content?.code) {
+          case 'EMAIL_REQUIRED':
+            navigate(`/login/email/${userIdentify.identify}`);
+            return;
+            break;
+
+          default:
+            setGlobalError(error?.data?.message);
+            return;
+            break;
+        }
         setGlobalError(error?.data?.message);
       });
   };
@@ -95,8 +111,8 @@ const Login: React.FC = () => {
       bottomchildren={
         <AuthBottomLinkBlock
           to={'/register'}
-          firstText=" Vous n'avez pas de compte ?"
-          secondText=" Créer un compte"
+          firstText="Pas encore de compte ?"
+          secondText="Créer un compte"
         />
       }
     >

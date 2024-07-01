@@ -5,11 +5,11 @@ type Props = {
 };
 const BottomNavigation = (props: Props) => {
   return (
-    <div className="btm-nav lg:hidden bg-base-300">
+    <div className="btm-nav lg:hidden bg-base-300 rounded-t-lg">
       {props.navs.map((nav, k) => {
         return (
           <button
-            className={nav.label === 'home' ? 'active text-primary' : ''}
+            className={nav.label === 'Profile' ? '  border-0 text-primary' : ''}
             key={k}
           >
             {nav.icon}

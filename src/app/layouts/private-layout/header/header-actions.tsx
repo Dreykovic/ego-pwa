@@ -39,7 +39,7 @@ export default function HeaderActions() {
           ) : null}
         </div>
       </button>
-      <div className="dropdown dropdown-end">
+      <div className="dropdown dropdown-end lg:hidden">
         <div
           tabIndex={0}
           role="button"

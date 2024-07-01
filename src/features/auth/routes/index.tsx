@@ -31,7 +31,8 @@ const authRoutes: RoutesConfigType = {
     component: <LoginPassword />, // view rendered
   },
   loginEmail: {
-    path: '/login/email', // the url
+    path:
+      env.appState != 'demo' ? '/login/email/:phoneNumber' : '/login/email/', // the url
     component: <LoginEmail />, // view rendered
   },
   authOtp: {

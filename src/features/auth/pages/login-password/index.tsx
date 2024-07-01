@@ -65,10 +65,10 @@ const LoginPassword: React.FC = () => {
       .unwrap()
       .then((payload) => {
         console.log('fulfilled', payload);
-        console.log(payload.content.token.accessToken);
+        console.log(payload.content.tokens.accessToken);
         dispatch(
           makeGlobalLogin({
-            token: payload.content.token.accessToken,
+            token: payload.content.tokens.accessToken,
             user: payload.content.user,
           }),
         );
@@ -76,7 +76,7 @@ const LoginPassword: React.FC = () => {
       })
       .catch((error) => {
         console.error('rejected', error);
-        setGlobalError(error?.data?.content?.message);
+        setGlobalError(error?.data?.message);
       });
   };
   return (
@@ -98,6 +98,11 @@ const LoginPassword: React.FC = () => {
         }
         submitBtnText="Se connecter"
       >
+        <div className="w-full ">
+          <p className="m-3 text-center">
+            Encore une étaape pour terminer. Veuillez saisir votre mot de passe
+          </p>
+        </div>
         <CustomTextIconInput
           icon={<KeyIcon className="w-4 h-4 text-neutral-content" />}
           type="password"

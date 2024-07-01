@@ -1,8 +1,8 @@
 import {
   ClipboardDocumentCheckIcon,
-  HomeModernIcon,
+  HomeIcon,
   UserCircleIcon,
-} from '@heroicons/react/24/outline';
+} from '@heroicons/react/24/solid';
 const iconsClassName = 'w-8 h-8';
 
 const navs = [
@@ -13,7 +13,7 @@ const navs = [
   },
   {
     label: 'home',
-    icon: <HomeModernIcon className={iconsClassName} />,
+    icon: <HomeIcon className={iconsClassName} />,
     path: '/',
   },
   {

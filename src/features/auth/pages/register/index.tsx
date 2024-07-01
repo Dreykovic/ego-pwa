@@ -1,5 +1,6 @@
 import { KeyIcon, UserIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +14,8 @@ import { useRegisterMutation } from '../../stores/auth-api';
 import { FormValues, RegisterFormValues, RegisterSchema } from '../../types';
 
 const Register: React.FC = () => {
+  const [globalError, setGlobalError] = useState<string>();
+
   const {
     control,
     handleSubmit,
@@ -43,9 +46,23 @@ const Register: React.FC = () => {
       .unwrap()
       .then((payload) => {
         console.log('fulfilled', payload);
-        // navigate(`/auth/otp/${ }`)
+        switch (payload.content.code) {
+          case 'USER_SUCCESSFUL_CREATED':
+            if (payload.status === 'success') {
+              navigate(`/auth/otp/${data.email}`);
+            }
+            break;
+
+          default:
+            setGlobalError(payload.message);
+
+            break;
+        }
       })
-      .catch((error) => console.error('rejected', error));
+      .catch((error) => {
+        console.error('rejected', error);
+        setGlobalError(error.data.message);
+      });
     // if (response?.success === true) {
     //   navigate('/auth/otp');
     // }
@@ -58,7 +75,9 @@ const Register: React.FC = () => {
         onSubmit={onSubmit}
         handleSubmit={handleSubmit}
         isLoading={isLoading}
+        globalErrorMsg={globalError}
         error={error}
+        submitBtnText="Valider"
         bottomchildren={
           <AuthBottomLinkBlock
             to={'/login'}

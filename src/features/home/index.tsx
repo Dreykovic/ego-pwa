@@ -21,19 +21,20 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <HomeCarousel />
-
+      <div className="my-4">
+        <HomeCarousel />
+      </div>
       <div
-        className={`grid max-sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 relative mt-6 bg-neutral px-3`}
+        className={`grid max-sm:grid-cols-1  md:grid-cols-1 lg:grid-cols-3 relative mt-6 bg-neutral px-3 `}
         ref={ref}
         style={width >= 1024 ? { height: `${contentHeight}px` } : {}}
       >
-        <div className="col-span-2  text-neutral-content overflow-y-hidden h-full pt-3">
+        <div className="col-span-2  text-neutral-content overflow-y-hidden h-full ">
           <Subtitle className="my-2 text-base-300 shadow-md">Services</Subtitle>
           <Services />
         </div>
         <div
-          className={`w-full max-sm:border-t-2 max-sm:border-l-0 md:border-t-2 md:border-l-0 lg:border-t-0 lg:border-l-2 border-base-300 pl-3  overflow-y-hidden lg:h-full pt-3`}
+          className={`w-full max-sm:border-t-2 max-sm:border-l-0 md:border-t-2 md:border-l-0 lg:border-t-0 lg:border-l-2 border-base-300 pl-3  overflow-y-hidden lg:h-full `}
           style={width < 1024 ? { height: `${(3 * height) / 5}px` } : {}}
         >
           <Subtitle className="my-2 text-base-300 shadow-md">

@@ -41,7 +41,7 @@ const WithAuth = <T extends FieldValues>(props: Props<T>) => {
           >
             {props.error && <ErrorAlert message={props.globalErrorMsg} />}
             {props.children}
-            <div className="my-8 flex justify-center">
+            <div className="my-4 flex justify-center">
               <button className="btn btn-neutral px-10 py-2" type="submit">
                 {props.isLoading ? (
                   <span className="loading loading-dots xs:loading-xs sm:loading-sm md:loading-md lg:loading-lg"></span>

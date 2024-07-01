@@ -15,7 +15,7 @@ export function AuthBottomLinkBlock({
     <>
       <div
         className={
-          'text-gost flex text-center flex-col mt-2 items-center text-sm py-2 max-w-3/4 ' +
+          'text-gost flex text-center flex-col my-2 items-center text-sm py-2 max-w-3/4 ' +
           className
         }
       >
