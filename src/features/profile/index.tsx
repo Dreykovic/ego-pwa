@@ -5,6 +5,7 @@ import {
   UserGroupIcon,
   IdentificationIcon,
   KeyIcon,
+  InformationCircleIcon,
 } from '@heroicons/react/24/solid';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +34,7 @@ const ProfileContent: React.FC = () => {
     dispatch(makeGlobalLogout());
   };
   return (
-    <>
+    <div className="lg:h-full overflow-auto">
       <div className="p-4 text-base-300">
         <div className="flex flex-col items-center gap-4">
           <div className="avatar h-full">
@@ -64,10 +65,10 @@ const ProfileContent: React.FC = () => {
               <ChevronRightIcon className={`${rightIconsClass}`} />
             </button>
           </div>
-          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary">
+          <div className="flex items-center justify-between p-4 border-t-2 bg-ternary">
             <div className="flex items-center  gap-10">
-              <UserGroupIcon className={leftIconsClass} />
-              <h1>Parrainage</h1>
+              <KeyIcon className={leftIconsClass} />
+              <h1>Changer Mot De Passe</h1>
             </div>
             <button className="">
               <ChevronRightIcon className={`${rightIconsClass}`} />
@@ -80,21 +81,36 @@ const ProfileContent: React.FC = () => {
           <div className="flex items-center justify-between p-4 rounded-t-xl bg-ternary">
             <div className="flex items-center  gap-10">
               <IdentificationIcon className={leftIconsClass} />
-              <h1>KYC</h1>
+              <h1>Vérification KYC</h1>
             </div>
             <button className="">
               <ChevronRightIcon className={`${rightIconsClass}`} />
             </button>
           </div>
-          <div className="flex items-center justify-between p-4 border-t-2 bg-ternary">
+          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary">
             <div className="flex items-center  gap-10">
-              <KeyIcon className={leftIconsClass} />
-              <h1>Changer Mot De Passe</h1>
+              <UserGroupIcon className={leftIconsClass} />
+              <h1>Parrainage et gains</h1>
             </div>
             <button className="">
               <ChevronRightIcon className={`${rightIconsClass}`} />
             </button>
           </div>
+
+          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary ">
+            <div className="flex items-center  gap-10">
+              <InformationCircleIcon className={leftIconsClass} />
+              <h1>Contacter le support</h1>
+            </div>
+            <button className="" onClick={logout}>
+              <ChevronRightIcon className={`${rightIconsClass}`} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-5 text-ternary-content">
+        <div className=" grid grid-flow-row-dense">
           <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary text-error">
             <div className="flex items-center  gap-10">
               <ArrowRightStartOnRectangleIcon className={leftIconsClass} />
@@ -106,7 +122,7 @@ const ProfileContent: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 const Profile: React.FC = () => {

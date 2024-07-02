@@ -8,6 +8,131 @@ const servicesData = [
 
     icon: <UserGroupIcon className={servicesIconsClassNames} />,
   },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
+  {
+    title: 'Transferts',
+
+    icon: <UserGroupIcon className={servicesIconsClassNames} />,
+  },
 
   {
     title: 'Airtime',
