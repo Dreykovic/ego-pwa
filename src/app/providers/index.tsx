@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import AppRoutes from '@/app/routes';
-import privateRoutes from '@/app/routes/private-routes';
-import publicRoutes from '@/app/routes/public-routes';
+import AppRoutes from '@/routes';
+import privateRoutes from '@/routes/private-routes';
+import publicRoutes from '@/routes/public-routes';
 import { RootState } from '@/stores';
 
 const AppProvider: React.FC = () => {

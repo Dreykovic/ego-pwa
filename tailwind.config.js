@@ -8,6 +8,12 @@ export default {
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
+    colors:{
+
+          ternary: "#74c0e148",
+
+          "ternary-content": "#0c486c",
+    },
     extend: {
       colors: {},
 

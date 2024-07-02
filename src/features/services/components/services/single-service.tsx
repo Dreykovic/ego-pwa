@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface Props {
   title: string;
@@ -15,7 +16,7 @@ const SingleService: React.FC<Props> = ({ title, icon }) => {
           type="button"
           className={`btn max-sm:btn-square backdrop-sepia-0 flex items-center m-auto text-${COLORS[0]} md:w-36 md:h-20 lg:w-40 lg:h-24  lg:rounded-xl`}
         >
-          {icon}
+          <Link to={'/cross-transfer'}>{icon}</Link>
         </button>
         <div className="text-base-300 text-start text-sm lg:text-lg">
           {title}

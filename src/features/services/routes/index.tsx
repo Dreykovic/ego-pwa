@@ -4,7 +4,7 @@ import { lazy } from 'react';
 
 import { RoutesConfigType } from '@/shared/types/routes-type';
 
-const Home = lazy(() => import('@/features/home'));
+const Home = lazy(() => import('@/features/services'));
 
 const homeRoutes: RoutesConfigType = {
   home: {

@@ -12,10 +12,12 @@ import HeaderTitle from './header-title';
 function Header() {
   const { width } = useWindowDimensions();
 
-  const { pageType } = useSelector((state: RootState) => state.header);
+  const { pageType, pageTitle } = useSelector(
+    (state: RootState) => state.header,
+  );
 
   return (
-    <div className="navbar  bg-base-200 sticky lg:static right-0 top-0 bottom-0  z-10 shadow-md max-lg:rounded-b-3xl lg:border-0">
+    <div className="navbar max-h-4 bg-base-200 sticky lg:static right-0 top-0 bottom-0  z-10 shadow-md max-lg:rounded-b-2xl lg:border-0">
       {/* Menu toogle for mobile view or small screen */}
       <div
         className={` ${
@@ -26,7 +28,11 @@ function Header() {
       >
         {width < 1024 ? (
           pageType === 'simple' ? (
-            <HeaderLeft />
+            pageTitle === 'Profile' || pageTitle === 'Historique' ? (
+              ''
+            ) : (
+              <HeaderLeft />
+            )
           ) : (
             <HeaderAvatar />
           )
@@ -41,7 +47,7 @@ function Header() {
             : 'max-lg:flex-1'
         }`}
       >
-        {pageType === 'simple' ? <HeaderTitle /> : ''}
+        {width >= 1024 || pageType === 'simple' ? <HeaderTitle /> : ''}
       </div>
       <div
         className={`${

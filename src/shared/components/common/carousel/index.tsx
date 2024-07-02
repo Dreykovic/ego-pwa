@@ -6,7 +6,7 @@ import 'swiper/css/autoplay';
 import carouselItems from './carousel-items';
 import carouselOptions from './carousel-options';
 
-const HomeCarousel = () => {
+const Carousel = () => {
   return (
     <Swiper
       {...carouselOptions}
@@ -32,4 +32,4 @@ const HomeCarousel = () => {
   );
 };
 
-export default HomeCarousel;
+export default Carousel;
