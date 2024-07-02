@@ -3,16 +3,15 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import WithAuth from '@/features/auth/components/hocs/with-auth';
-import OtpInput from '@/shared/components/input/otp-input';
-import env from '@/shared/config/env';
-
-import SuccessAlert from '../../components/ui/success-alert';
 import {
   useResendOtpMutation,
   useVerifyOtpMutation,
-} from '../../stores/auth-api';
-import { FormValues, OtpFormValues, OtpSchema } from '../../types';
+} from '@/features/auth/api';
+import WithAuth from '@/features/auth/components/hocs/with-auth';
+import SuccessAlert from '@/features/auth/components/ui/success-alert';
+import { FormValues, OtpFormValues, OtpSchema } from '@/features/auth/types';
+import OtpInput from '@/shared/components/ui/input/otp-input';
+import env from '@/shared/config/env';
 
 const Otp: React.FC = () => {
   const { email } = useParams();

@@ -5,19 +5,18 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useLoginMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
-import env from '@/shared/config/env';
-import { AppDispatch } from '@/stores';
-
-import { AuthBottomLinkBlock } from '../../components/ui/auth-bottom-link-block';
-import { useLoginMutation } from '../../stores/auth-api';
-import { makeGlobalLogin } from '../../stores/auth-slice';
+import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
 import {
   FormValues,
   LoginPasswordFormValues,
   LoginPasswordSchema,
-} from '../../types';
+} from '@/features/auth/types';
+import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
+import env from '@/shared/config/env';
+import { AppDispatch } from '@/stores';
+import { makeGlobalLogin } from '@/stores/auth-slice';
 
 const LoginPassword: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

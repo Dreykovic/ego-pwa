@@ -4,21 +4,20 @@ import { useState } from 'react';
 import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import { useRequestResetPasswordMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
-import CustomPhoneInput from '@/shared/components/input/phone-input';
-import env from '@/shared/config/env';
-
-import { AuthBottomLinkBlock } from '../../components/ui/auth-bottom-link-block';
-import SuccessAlert from '../../components/ui/success-alert';
-import { useRequestResetPasswordMutation } from '../../stores/auth-api';
+import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
+import SuccessAlert from '@/features/auth/components/ui/success-alert';
 import {
   LoginEmailFormValues,
   LoginPhoneFormValues,
   LoginPhoneSchema,
   LoginEmailSchema,
   Identify,
-} from '../../types';
+} from '@/features/auth/types';
+import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input';
+import CustomPhoneInput from '@/shared/components/ui/input/phone-input';
+import env from '@/shared/config/env';
 
 const PasswordForgot: React.FC = () => {
   const [pwdForgotMode, setPwdForgotMode] = useState<'phone' | 'email'>(

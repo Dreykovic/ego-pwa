@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import SuspenseContent from '@/shared/components/suspens-content';
+import SuspenseContent from '@/shared/components/ui/suspens-content';
 import { RoutesConfigType } from '@/shared/types/routes-type';
 
 type Props = {

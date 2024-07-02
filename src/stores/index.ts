@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import headerSlice from '@/app/layouts/private-layout/header/header-slice';
-import rightDrawerSlice from '@/app/layouts/private-layout/right-sidebar/right-drawer-slice';
-import authReducer from '@/features/auth/stores/auth-slice';
+import headerSlice from '@/shared/components/layouts/partials/header/header-slice';
+import rightDrawerSlice from '@/shared/components/layouts/partials/right-sidebar/right-drawer-slice';
+import env from '@/shared/config/env';
 
 import apiSlice from './api-slice';
+import authReducer from './auth-slice';
+
 const combinedReducer = {
   header: headerSlice,
   rightDrawer: rightDrawerSlice,
@@ -14,6 +16,7 @@ const combinedReducer = {
 
 const store = configureStore({
   reducer: combinedReducer,
+  devTools: env.appState !== 'production',
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
 });

@@ -3,16 +3,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useResetPasswordMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
-import env from '@/shared/config/env';
-
-import { useResetPasswordMutation } from '../../stores/auth-api';
 import {
   FormValues,
   PasswordResetFormValues,
   PasswordResetSchema,
-} from '../../types';
+} from '@/features/auth/types';
+import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
+import env from '@/shared/config/env';
 
 const PasswordReset: React.FC = () => {
   const { token } = useParams();

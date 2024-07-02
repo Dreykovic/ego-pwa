@@ -4,16 +4,15 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useRecoverEmailMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input';
-import env from '@/shared/config/env';
-
-import { useRecoverEmailMutation } from '../../stores/auth-api';
 import {
   FormValues,
   LoginEmailFormValues,
   LoginEmailSchema,
-} from '../../types';
+} from '@/features/auth/types';
+import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input';
+import env from '@/shared/config/env';
 
 const LoginEmail: React.FC = () => {
   const {

@@ -4,14 +4,17 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
+import { useRegisterMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
 import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
-import CustomTextIconInput from '@/shared/components/input/custom-text-icon-input/index';
-import CustomPhoneInput from '@/shared/components/input/phone-input';
+import {
+  FormValues,
+  RegisterFormValues,
+  RegisterSchema,
+} from '@/features/auth/types';
+import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
+import CustomPhoneInput from '@/shared/components/ui/input/phone-input';
 import env from '@/shared/config/env';
-
-import { useRegisterMutation } from '../../stores/auth-api';
-import { FormValues, RegisterFormValues, RegisterSchema } from '../../types';
 
 const Register: React.FC = () => {
   const [globalError, setGlobalError] = useState<string>();
