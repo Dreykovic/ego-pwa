@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import History from '@/shared/components/common/history';
+const History = lazy(() => import('@/shared/components/common/history'));
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-import SimplePrivateLayout from '@/shared/components/layouts/private-layouts/simple';
-import Subtitle from '@/shared/components/ui/Typography/subtitle';
+const Subtitle = lazy(
+  () => import('@/shared/components/ui/Typography/subtitle'),
+);
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { AppDispatch } from '@/stores';
 
@@ -16,23 +17,24 @@ const MobileHistory: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
-  if (width >= 1024) {
-    navigate('/');
-  }
+
   useEffect(() => {
+    if (width >= 1024) {
+      navigate('/');
+    }
     dispatch(setPageTitle({ title: 'Historique' }));
     dispatch(setPageType({ type: 'simple' }));
-  }, [dispatch]);
+  }, [dispatch, navigate, width]);
 
   return (
-    <SimplePrivateLayout>
+    <>
       <div className="p-4">
         <div className="my-2 text-base-300 shadow-md flex justify-between">
           <Subtitle className="">{'Historique'}</Subtitle>
         </div>
         <History />
       </div>
-    </SimplePrivateLayout>
+    </>
   );
 };
 

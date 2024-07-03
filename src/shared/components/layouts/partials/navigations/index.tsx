@@ -1,4 +1,6 @@
-import BottomNavigation from './bottom-navigation';
+import { lazy } from 'react';
+
+const BottomNavigation = lazy(() => import('./bottom-navigation'));
 import navs from './navs';
 
 export interface IAppProps {

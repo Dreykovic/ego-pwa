@@ -24,7 +24,7 @@ const BottomNavigation = (props: Props) => {
             <Link to={nav.path} className="flex flex-col items-center">
               {nav.icon}
 
-              {/* <span className="btm-nav-label">{nav.label}</span> */}
+              <span className="btm-nav-label">{nav.label}</span>
             </Link>
           </button>
         );

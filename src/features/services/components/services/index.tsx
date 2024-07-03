@@ -1,5 +1,7 @@
+import { lazy } from 'react';
+
 import servicesData from './services-data';
-import SingleService from './single-service';
+const SingleService = lazy(() => import('./single-service'));
 
 const Services: React.FC = () => {
   return (

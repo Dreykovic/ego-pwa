@@ -1,15 +1,15 @@
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { ReactNode } from 'react';
+import { ReactNode, lazy } from 'react';
 import {
   FieldValues,
   SubmitHandler,
   UseFormHandleSubmit,
 } from 'react-hook-form';
 
-import GlobalPublicLayout from '@/shared/components/layouts/public-layouts/global';
-
-import ErrorAlert from '../ui/error-alert';
+const ErrorAlert = lazy(
+  () => import('@/features/auth/components/ui/error-alert'),
+);
 
 type Props<T extends FieldValues> = {
   children: ReactNode;
@@ -26,7 +26,7 @@ type Props<T extends FieldValues> = {
 
 const WithAuth = <T extends FieldValues>(props: Props<T>) => {
   return (
-    <GlobalPublicLayout>
+    <>
       <div className="h-full flex items-center justify-center">
         <div className="max-sm:py-1 py-6 px-5 max-sm:px-1 rounded-md">
           <div className="text-base-content">
@@ -60,7 +60,7 @@ const WithAuth = <T extends FieldValues>(props: Props<T>) => {
           </div>
         </div>
       </div>
-    </GlobalPublicLayout>
+    </>
   );
 };
 

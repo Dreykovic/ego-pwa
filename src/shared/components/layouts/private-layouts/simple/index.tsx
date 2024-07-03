@@ -1,18 +1,25 @@
-import { ReactNode, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { ReactNode, useEffect, useRef, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Header from '@/shared/components/layouts/partials/header';
+const Header = lazy(
+  () => import('@/shared/components/layouts/partials/header'),
+);
 import { setPageType } from '@/shared/components/layouts/partials/header/header-slice';
-import Navigations from '@/shared/components/layouts/partials/navigations';
-import RightSidebar from '@/shared/components/layouts/partials/right-sidebar';
+const Navigations = lazy(
+  () => import('@/shared/components/layouts/partials/navigations'),
+);
+const RightSidebar = lazy(
+  () => import('@/shared/components/layouts/partials/right-sidebar'),
+);
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
-import { AppDispatch } from '@/stores';
+import { AppDispatch, RootState } from '@/stores';
 
 type Props = {
   children: ReactNode;
 };
 function SimplePrivateLayout(props: Props) {
   const { height } = useWindowDimensions();
+  const { pageTitle } = useSelector((state: RootState) => state.header);
 
   const mainContentRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -32,8 +39,12 @@ function SimplePrivateLayout(props: Props) {
           </main>
         </div>
       </div>
-      <Navigations position="bottom" />
-      {/* {pageTitle === 'Profile' ? <Navigations position="bottom" /> : ''} */}
+      {/* <Navigations position="bottom" /> */}
+      {pageTitle === 'Profile' || pageTitle === 'Historique' ? (
+        <Navigations position="bottom" />
+      ) : (
+        ''
+      )}
       {/* Right drawer - containing secondary content like notifications list etc.. */}
       <RightSidebar />
     </>

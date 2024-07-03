@@ -1,10 +1,13 @@
 import XMarkIcon from '@heroicons/react/24/solid/XMarkIcon';
+import { lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RIGHT_DRAWER_TYPES } from '@/shared/utils/global-constant-util';
 import { AppDispatch, RootState } from '@/stores';
 
-import NotificationBodyRightDrawer from './notification-body-right-drawer';
+const NotificationBodyRightDrawer = lazy(
+  () => import('./notification-body-right-drawer'),
+);
 import { closeRightDrawer } from './right-drawer-slice';
 
 function RightSidebar() {

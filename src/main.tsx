@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SuspenseContent from '@/shared/components/ui/suspens-content';
 import store from '@/stores/';
 
-import App from './app';
+const App = lazy(() => import('./app'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

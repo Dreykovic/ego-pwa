@@ -16,6 +16,7 @@ const GlobalPublicLayout = (props: Props) => {
         {/* `url(${Logo})` */}
 
         <AuthTitle className={'mt-4'} />
+        {/* <div className="">{props.children}</div> */}
         <div className="">{props.children}</div>
       </div>
     </>

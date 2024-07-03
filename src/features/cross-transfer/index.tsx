@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-import MainPrivateLayout from '@/shared/components/layouts/private-layouts/main';
-import SimplePrivateLayout from '@/shared/components/layouts/private-layouts/simple';
-import Subtitle from '@/shared/components/ui/Typography/subtitle';
-import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { AppDispatch } from '@/stores';
+const Subtitle = lazy(
+  () => import('@/shared/components/ui/Typography/subtitle'),
+);
 
 const TransferForm = () => {
   return (
@@ -24,7 +23,6 @@ const TransferForm = () => {
 
 const CrossTransfer: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { width } = useWindowDimensions();
 
   useEffect(() => {
     dispatch(setPageTitle({ title: 'Transfert' }));
@@ -33,15 +31,7 @@ const CrossTransfer: React.FC = () => {
 
   return (
     <>
-      {width >= 1024 ? (
-        <MainPrivateLayout>
-          <TransferForm />
-        </MainPrivateLayout>
-      ) : (
-        <SimplePrivateLayout>
-          <TransferForm />
-        </SimplePrivateLayout>
-      )}
+      <TransferForm />
     </>
   );
 };

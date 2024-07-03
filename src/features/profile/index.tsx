@@ -7,21 +7,20 @@ import {
   KeyIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/solid';
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-import MainPrivateLayout from '@/shared/components/layouts/private-layouts/main';
-import SimplePrivateLayout from '@/shared/components/layouts/private-layouts/simple';
-import Subtitle from '@/shared/components/ui/Typography/subtitle';
-import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
+const Subtitle = lazy(
+  () => import('@/shared/components/ui/Typography/subtitle'),
+);
 import { AppDispatch, RootState } from '@/stores';
 import { makeGlobalLogout } from '@/stores/auth-slice';
 
-const ProfileContent: React.FC = () => {
+const Profile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { authUser } = useSelector((state: RootState) => state.auth);
   const leftIconsClass = 'w-8 h-8';
@@ -34,7 +33,7 @@ const ProfileContent: React.FC = () => {
     dispatch(makeGlobalLogout());
   };
   return (
-    <div className="lg:h-full overflow-auto">
+    <div className="h-full   overflow-auto">
       <div className="p-4 text-base-300">
         <div className="flex flex-col items-center gap-4">
           <div className="avatar h-full">
@@ -123,23 +122,6 @@ const ProfileContent: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
-const Profile: React.FC = () => {
-  const { width } = useWindowDimensions();
-
-  return (
-    <>
-      {width >= 1024 ? (
-        <MainPrivateLayout>
-          <ProfileContent />
-        </MainPrivateLayout>
-      ) : (
-        <SimplePrivateLayout>
-          <ProfileContent />
-        </SimplePrivateLayout>
-      )}
-    </>
   );
 };
 

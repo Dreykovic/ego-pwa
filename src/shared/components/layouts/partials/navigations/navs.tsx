@@ -1,7 +1,7 @@
 import {
   ClipboardDocumentCheckIcon,
   HomeIcon,
-  UserCircleIcon,
+  UserIcon,
 } from '@heroicons/react/24/solid';
 
 import privateRoutes from '@/routes/private-routes';
@@ -21,7 +21,7 @@ const navs = [
   },
   {
     label: 'Profile',
-    icon: <UserCircleIcon className={iconsClassName} />,
+    icon: <UserIcon className={iconsClassName} />,
     path: privateRoutes.profile?.path,
   },
 ];

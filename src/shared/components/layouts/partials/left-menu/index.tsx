@@ -1,5 +1,6 @@
-import LeftMenuActons from './left-menu-action';
-import LeftMenuAvatar from './left-menu-avatar';
+import { lazy } from 'react';
+const LeftMenuActons = lazy(() => import('./left-menu-action'));
+const LeftMenuAvatar = lazy(() => import('./left-menu-avatar'));
 
 type Props = {
   className?: string;
