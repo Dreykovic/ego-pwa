@@ -1,15 +1,13 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const History = lazy(() => import('@/shared/components/common/history'));
+import History from '@/shared/components/common/history';
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-const Subtitle = lazy(
-  () => import('@/shared/components/ui/Typography/subtitle'),
-);
+import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { AppDispatch } from '@/stores';
 

@@ -1,9 +1,6 @@
-import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 
-const Subtitle = lazy(
-  () => import('@/shared/components/ui/Typography/subtitle'),
-);
+import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import { RootState } from '@/stores';
 
 export default function HeaderTitle() {

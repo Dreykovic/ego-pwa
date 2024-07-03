@@ -1,10 +1,8 @@
-import React, { lazy } from 'react';
+import React from 'react';
 
-const AppRoutes = lazy(() => import('@/routes'));
+import AppRoutes from '@/routes';
 import publicRoutes from '@/routes/public-routes';
-const GlobalPublicLayout = lazy(
-  () => import('@/shared/components/layouts/public-layouts/global'),
-);
+import GlobalPublicLayout from '@/shared/components/layouts/public-layouts/global';
 
 const GuestProvider: React.FC = () => {
   return (

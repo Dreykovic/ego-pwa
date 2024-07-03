@@ -1,8 +1,8 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { themeChange } from 'theme-change';
 
-const AppProvider = lazy(() => import('./providers'));
+import AppProvider from './providers';
 
 const App: React.FC = () => {
   useEffect(() => {

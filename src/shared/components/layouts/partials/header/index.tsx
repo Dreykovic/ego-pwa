@@ -1,14 +1,13 @@
-import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { RootState } from '@/stores';
 
-const HeaderActions = lazy(() => import('./header-actions'));
-const HeaderAvatar = lazy(() => import('./header-avatar'));
-const HeaderLeft = lazy(() => import('./header-left'));
-const HeaderLogo = lazy(() => import('./header-logo'));
-const HeaderTitle = lazy(() => import('./header-title'));
+import HeaderActions from './header-actions';
+import HeaderAvatar from './header-avatar';
+import HeaderLeft from './header-left';
+import HeaderLogo from './header-logo';
+import HeaderTitle from './header-title';
 
 function Header() {
   const { width } = useWindowDimensions();

@@ -7,16 +7,14 @@ import {
   KeyIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/solid';
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-const Subtitle = lazy(
-  () => import('@/shared/components/ui/Typography/subtitle'),
-);
+import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import { AppDispatch, RootState } from '@/stores';
 import { makeGlobalLogout } from '@/stores/auth-slice';
 

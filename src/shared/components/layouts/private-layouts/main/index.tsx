@@ -1,27 +1,17 @@
-import { ReactNode, useRef, lazy } from 'react';
+import { ReactNode, useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import privateRoutes from '@/routes/private-routes';
-const Carousel = lazy(() => import('@/shared/components/common/carousel'));
-const History = lazy(() => import('@/shared/components/common/history'));
-const Header = lazy(
-  () => import('@/shared/components/layouts/partials/header'),
-);
+import Carousel from '@/shared/components/common/carousel';
+import History from '@/shared/components/common/history';
+import Header from '@/shared/components/layouts/partials/header';
 import { setPageType } from '@/shared/components/layouts/partials/header/header-slice';
-const LeftMenu = lazy(
-  () => import('@/shared/components/layouts/partials/left-menu'),
-);
-const Navigations = lazy(
-  () => import('@/shared/components/layouts/partials/navigations'),
-);
-const RightSidebar = lazy(
-  () => import('@/shared/components/layouts/partials/right-sidebar'),
-);
-const Subtitle = lazy(
-  () => import('@/shared/components/ui/Typography/subtitle'),
-);
+import LeftMenu from '@/shared/components/layouts/partials/left-menu';
+import Navigations from '@/shared/components/layouts/partials/navigations';
+import RightSidebar from '@/shared/components/layouts/partials/right-sidebar';
+import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import useBoundingClientRect from '@/shared/hooks/use-bounding-client-rect';
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { AppDispatch } from '@/stores';

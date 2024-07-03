@@ -1,16 +1,10 @@
-import { ReactNode, useEffect, useRef, lazy } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Header = lazy(
-  () => import('@/shared/components/layouts/partials/header'),
-);
+import Header from '@/shared/components/layouts/partials/header';
 import { setPageType } from '@/shared/components/layouts/partials/header/header-slice';
-const Navigations = lazy(
-  () => import('@/shared/components/layouts/partials/navigations'),
-);
-const RightSidebar = lazy(
-  () => import('@/shared/components/layouts/partials/right-sidebar'),
-);
+import Navigations from '@/shared/components/layouts/partials/navigations';
+import RightSidebar from '@/shared/components/layouts/partials/right-sidebar';
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
 import { AppDispatch, RootState } from '@/stores';
 

@@ -1,15 +1,13 @@
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { ReactNode, lazy } from 'react';
+import { ReactNode } from 'react';
 import {
   FieldValues,
   SubmitHandler,
   UseFormHandleSubmit,
 } from 'react-hook-form';
 
-const ErrorAlert = lazy(
-  () => import('@/features/auth/components/ui/error-alert'),
-);
+import ErrorAlert from '../ui/error-alert';
 
 type Props<T extends FieldValues> = {
   children: ReactNode;

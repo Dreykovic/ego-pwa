@@ -1,16 +1,14 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
   setPageTitle,
   setPageType,
 } from '@/shared/components/layouts/partials/header/header-slice';
-const Subtitle = lazy(
-  () => import('@/shared/components/ui/Typography/subtitle'),
-);
+import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import { AppDispatch } from '@/stores';
 
-const Services = lazy(() => import('./components/services'));
+import Services from './components/services';
 
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
