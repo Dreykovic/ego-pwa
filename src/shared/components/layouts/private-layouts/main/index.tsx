@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import privateRoutes from '@/routes/private-routes';
@@ -14,7 +14,7 @@ import RightSidebar from '@/shared/components/layouts/partials/right-sidebar';
 import Subtitle from '@/shared/components/ui/Typography/subtitle';
 import useBoundingClientRect from '@/shared/hooks/use-bounding-client-rect';
 import useWindowDimensions from '@/shared/hooks/use-window-dimensions';
-import { AppDispatch } from '@/stores';
+import { AppDispatch, RootState } from '@/stores';
 
 type Props = {
   children: ReactNode;
@@ -25,6 +25,9 @@ function MainPrivateLayout(props: Props) {
   const [rect, ref] = useBoundingClientRect<HTMLDivElement>();
   const [contentHeight, setContentHeight] = useState<number>(0);
   const dispatch = useDispatch<AppDispatch>();
+  const { pageTitle, pageType } = useSelector(
+    (state: RootState) => state.header,
+  );
 
   useEffect(() => {
     if (rect) {
@@ -86,7 +89,11 @@ function MainPrivateLayout(props: Props) {
                         ''
                       )}
                     </div>
-                    <History />
+                    <History
+                      width={width}
+                      pageTitle={pageTitle}
+                      pageType={pageType}
+                    />
                   </div>
                 </div>
               </div>

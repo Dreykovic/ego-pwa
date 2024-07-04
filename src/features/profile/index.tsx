@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
     dispatch(makeGlobalLogout());
   };
   return (
-    <div className="h-full   overflow-auto">
+    <div className="h-full overflow-auto">
       <div className="p-4 text-base-300">
         <div className="flex flex-col items-center gap-4">
           <div className="avatar h-full">
