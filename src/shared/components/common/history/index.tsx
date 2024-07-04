@@ -55,7 +55,7 @@ const History = (props: Props) => {
         <div className="w-full overflow-hidden">
           <div
             role="tablist"
-            className="tabs tabs-lifted tabs-lg w-full text-nowrap overflow-auto"
+            className={`tabs tabs-lifted tabs-lg w-full text-nowrap overflow-auto  `}
           >
             <input
               type="radio"
