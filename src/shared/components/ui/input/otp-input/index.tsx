@@ -52,7 +52,7 @@ const OtpInput = <T extends FieldValues>(props: OtpInputProps<T>) => {
             value={otp[index]}
             onChange={(e) => handleChange(index, e.target.value)}
             onKeyDown={(e) => handleKeyDown(index, e)}
-            className={`input input-bordered max-sm:w-[30px] w-[40px] bg-neutral text-neutral-content p-1 text-center ${props.className}`}
+            className={`input input-bordered max-mobile:w-[30px] w-[40px] bg-neutral text-neutral-content p-1 text-center ${props.className}`}
           />
         ))}
       </div>

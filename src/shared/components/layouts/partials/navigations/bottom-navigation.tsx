@@ -13,7 +13,7 @@ const BottomNavigation = (props: Props) => {
   );
   return (
     <div
-      className={`btm-nav ${pageType === 'simple' ? 'sticky' : ''} lg:hidden bg-base-300 m-0 bottom-0 p-0 rounded-t-lg`}
+      className={`btm-nav ${pageType === 'simple' ? 'sticky' : ''} laptop:hidden bg-base-300 m-0 bottom-0 p-0 rounded-t-lg`}
     >
       {props.navs.map((nav, k) => {
         return (

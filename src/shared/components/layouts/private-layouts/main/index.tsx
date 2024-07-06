@@ -38,18 +38,21 @@ function MainPrivateLayout(props: Props) {
   return (
     <>
       {/* Left drawer - containing page content and side bar (always open) */}
-      <div className="lg:flex lg:items-center lg:justify-center lg:w-screen lg:h-screen bg-base-300">
-        <div className="w-full xl:max-w-[1900px] lg:h-full absolute max-lg:top-0 max-lg:left-0 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:overflow-hidden bg-neutral border-b-8 border-b-ternary">
+      <div className="laptop:flex laptop:items-center laptop:justify-center laptop:w-screen laptop:h-screen bg-base-300">
+        <div className="w-full desktop:max-w-[1900px] laptop:h-full absolute max-laptop:top-0 max-laptop:left-0 laptop:top-1/2 laptop:left-1/2 laptop:transform laptop:-translate-x-1/2 laptop:-translate-y-1/2 laptop:overflow-hidden bg-neutral border-b-8 border-b-ternary">
           <div
-            className="h-full lg:grid  relative w-full"
+            className="h-full laptop:grid  relative w-full"
             style={
               width >= 1024
                 ? { gridTemplateColumns: 'minmax(60px, 70px) repeat(9, 1fr)' }
                 : {}
             }
           >
-            <LeftMenu className=" lg:col-span-1" />
-            <main className=" lg:col-span-9 bg-ternary " ref={mainContentRef}>
+            <LeftMenu className=" laptop:col-span-1" />
+            <main
+              className=" laptop:col-span-9 bg-ternary "
+              ref={mainContentRef}
+            >
               <Header />
 
               <div className="mx-4">
@@ -57,7 +60,7 @@ function MainPrivateLayout(props: Props) {
                   <Carousel />
                 </div>
                 <div
-                  className={`grid max-sm:grid-cols-1  md:grid-cols-1 lg:grid-cols-3 relative mt-6 bg-neutral px-3 `}
+                  className={`grid max-mobile:grid-cols-1  tablet:grid-cols-1 laptop:grid-cols-3 relative mt-6 bg-neutral px-3 `}
                   ref={ref}
                   style={
                     width >= 1024
@@ -69,7 +72,7 @@ function MainPrivateLayout(props: Props) {
                     {props.children}
                   </div>
                   <div
-                    className={`w-full max-sm:border-t-2 max-sm:border-l-0 md:border-t-2 md:border-l-0 lg:border-t-0 lg:border-l-2 border-base-300 pl-3  overflow-y-hidden lg:h-full `}
+                    className={`w-full max-mobile:border-t-2 max-mobile:border-l-0 tablet:border-t-2 tablet:border-l-0 laptop:border-t-0 laptop:border-l-2 border-base-300 pl-3  overflow-y-hidden laptop:h-full `}
                     style={
                       width < 1024 ? { height: `${(3 * height) / 5}px` } : {}
                     }

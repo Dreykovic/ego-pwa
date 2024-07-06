@@ -8,7 +8,7 @@ export default function SuccessAlert(props: IErrorAlertProps) {
   return (
     <div
       role="alert"
-      className="alert  alert-success my-2 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[270px] max-sm:flex max-sm:items-center"
+      className="alert  alert-success my-2 laptop:w-[400px] tablet:w-[400px] mobile:w-[300px]  max-mobile:w-[270px] max-mobile:flex max-mobile:items-center"
     >
       <CheckCircleIcon className="w-6 h-6" />
       <span>{props.message ?? 'Succès ! opération éffectuée avec succès'}</span>

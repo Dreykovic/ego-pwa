@@ -17,13 +17,13 @@ function Header() {
   );
 
   return (
-    <div className="navbar max-h-4 bg-base-200 sticky lg:static right-0 top-0 bottom-0  z-10 shadow-md max-lg:rounded-b-2xl lg:border-0">
+    <div className="navbar max-h-4 bg-base-200 sticky laptop:static right-0 top-0 bottom-0  z-10 shadow-md max-laptop:rounded-b-2xl laptop:border-0">
       {/* Menu toogle for mobile view or small screen */}
       <div
         className={` ${
           width >= 1024 || pageType === 'simple'
             ? 'navbar-start'
-            : 'max-lg:flex-none'
+            : 'max-laptop:flex-none'
         }`}
       >
         {width < 1024 ? (
@@ -44,7 +44,7 @@ function Header() {
         className={`${
           width >= 1024 || pageType === 'simple'
             ? 'navbar-center'
-            : 'max-lg:flex-1'
+            : 'max-laptop:flex-1'
         }`}
       >
         {width >= 1024 || pageType === 'simple' ? <HeaderTitle /> : ''}
@@ -53,7 +53,7 @@ function Header() {
         className={`${
           width >= 1024 || pageType === 'simple'
             ? 'navbar-end'
-            : 'max-lg:flex-none'
+            : 'max-laptop:flex-none'
         } gap-2`}
       >
         {/* Notification icon */}

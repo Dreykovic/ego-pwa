@@ -12,7 +12,7 @@ const GlobalPublicLayout = (props: Props) => {
     <>
       <BgParticles />
 
-      <div className="w-full h-dvh grid grid-cols-1 lg:grid-rows-layout max-sm:place-items-center  sm:place-content-center overflow-y-auto ">
+      <div className="w-full h-dvh grid grid-cols-1 laptop:grid-rows-layout max-mobile:place-items-center  mobile:place-content-center overflow-y-auto ">
         {/* `url(${Logo})` */}
 
         <AuthTitle className={'mt-4'} />

@@ -20,17 +20,17 @@ const CustomPhoneInput = <T extends FieldValues>(
   const { field } = useController(props);
   /**
    *     <div className={'mb-4  flew flex-col items-center' + props.className}>
-      <label className="input input-bordered lg:h-[60px] flex items-center gap-4 bg-neutral w-full lg:text-lg">
+      <label className="input input-bordered laptop:h-[60px] flex items-center gap-4 bg-neutral w-full laptop:text-lg">
    */
   return (
     <div
       className={
-        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[300px] flew flex-col items-center justify-center m-auto'
+        'mb-4 laptop:w-[400px] tablet:w-[400px] mobile:w-[300px]  max-mobile:w-[300px] flew flex-col items-center justify-center m-auto'
       }
     >
       <label
         className={
-          'input input-bordered input-accent lg:h-[60px] flex items-center gap-4 bg-neutral w-full lg:text-lg ' +
+          'input input-bordered input-accent laptop:h-[60px] flex items-center gap-4 bg-neutral w-full laptop:text-lg ' +
           props.className
         }
       >

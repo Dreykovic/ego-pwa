@@ -8,7 +8,7 @@ export default function ErrorAlert(props: IErrorAlertProps) {
   return (
     <div
       role="alert"
-      className="alert  alert-error my-2 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[270px] max-sm:flex max-sm:items-center"
+      className="alert  alert-error my-2 laptop:w-[400px] tablet:w-[400px] mobile:w-[300px]  max-mobile:w-[270px] max-mobile:flex max-mobile:items-center"
     >
       <XCircleIcon className="w-6 h-6" />
       <span>{props.message ?? 'Erreur ! Vérifiez les informations'}</span>

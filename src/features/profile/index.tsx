@@ -53,7 +53,7 @@ const Profile: React.FC = () => {
       </div>
       <div className="p-5 text-ternary-content">
         <div className=" grid grid-flow-row-dense">
-          <div className="flex items-center justify-between p-4 rounded-t-xl bg-ternary ">
+          <div className="flex items-center justify-between p-4 rounded-t-xl bg-ternary">
             <div className="flex items-center  gap-10">
               <UserCircleIcon className={leftIconsClass} />
               <h1>Compte</h1>
@@ -62,7 +62,7 @@ const Profile: React.FC = () => {
               <ChevronRightIcon className={`${rightIconsClass}`} />
             </button>
           </div>
-          <div className="flex items-center justify-between p-4 border-t-2 bg-ternary">
+          <div className="flex items-center justify-between p-4 border-t-2 bg-ternary border-base-300">
             <div className="flex items-center  gap-10">
               <KeyIcon className={leftIconsClass} />
               <h1>Changer Mot De Passe</h1>
@@ -84,7 +84,7 @@ const Profile: React.FC = () => {
               <ChevronRightIcon className={`${rightIconsClass}`} />
             </button>
           </div>
-          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary">
+          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary border-base-300">
             <div className="flex items-center  gap-10">
               <UserGroupIcon className={leftIconsClass} />
               <h1>Parrainage et gains</h1>
@@ -94,7 +94,7 @@ const Profile: React.FC = () => {
             </button>
           </div>
 
-          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary ">
+          <div className="flex items-center justify-between p-4 border-t-2 rounded-b-xl bg-ternary border-base-300">
             <div className="flex items-center  gap-10">
               <InformationCircleIcon className={leftIconsClass} />
               <h1>Contacter le support</h1>

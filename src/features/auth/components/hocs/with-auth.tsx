@@ -26,9 +26,9 @@ const WithAuth = <T extends FieldValues>(props: Props<T>) => {
   return (
     <>
       <div className="h-full flex items-center justify-center">
-        <div className="max-sm:py-1 py-6 px-5 max-sm:px-1 rounded-md">
+        <div className="max-mobile:py-1 py-6 px-5 max-mobile:px-1 rounded-md">
           <div className="text-base-content">
-            <div className="max-sm:mb-3 mb-8 flex flex-col items-center">
+            <div className="max-mobile:mb-3 mb-8 flex flex-col items-center">
               <div className="flex flex-col mx-10 my-0 items-center justify-center text-2xl">
                 <h3 className="uppercase">{props.title}</h3>
               </div>
@@ -45,7 +45,7 @@ const WithAuth = <T extends FieldValues>(props: Props<T>) => {
               <div className="my-4 flex justify-center">
                 <button className="btn btn-neutral px-10 py-2" type="submit">
                   {props.isLoading ? (
-                    <span className="loading loading-dots xs:loading-xs sm:loading-sm md:loading-md lg:loading-lg"></span>
+                    <span className="loading loading-dots xs:loading-xs mobile:loading-sm tablet:loading-md laptop:loading-lg"></span>
                   ) : props.submitBtnText ? (
                     props.submitBtnText
                   ) : (

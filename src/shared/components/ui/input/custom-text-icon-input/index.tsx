@@ -18,7 +18,7 @@ const CustomTextIconInput = <T extends FieldValues>(
   props: CustomTextIconInputProps<T>,
 ) => {
   const iconClassNames =
-    'max-sm:w-4 max-sm:h-4 w-6 h-6 text-neutral-content  opacity-70';
+    'max-mobile:w-4 max-mobile:h-4 w-6 h-6 text-neutral-content  opacity-70';
   const { field } = useController(props);
   const [pwdtype, setPwdType] = useState<string>(props.type);
   const [eyeIcon, setEyeIcon] = useState<ReactNode>(
@@ -38,31 +38,31 @@ const CustomTextIconInput = <T extends FieldValues>(
   return (
     <div
       className={
-        'mb-4 lg:w-[400px] md:w-[400px] sm:w-[300px]  max-sm:w-[300px] flew flex-col items-center justify-center m-auto '
+        'mb-4 laptop:w-[400px] tablet:w-[400px] mobile:w-[300px]  max-mobile:w-[300px] flew flex-col items-center justify-center m-auto '
       }
     >
       {/* // TODO: Gérer le border des input quand la validation est vbonne */}
       <label
         className={
-          'input input-bordered lg:h-[60px] flex items-center  gap-2 bg-neutral w-full lg:text-lg ' +
+          'input input-bordered laptop:h-[60px] flex items-center  gap-2 bg-neutral w-full laptop:text-lg ' +
           props.className
         }
       >
-        <div className="lg:w-[20px] md:w-[20px] sm:w-[20px]  max-sm:w-[20px]">
+        <div className="laptop:w-[20px] tablet:w-[20px] mobile:w-[20px]  max-mobile:w-[20px]">
           {props.icon}
         </div>
         <input
           {...field}
           type={pwdtype}
           className={
-            'grow text-neutral-content lg:w-[320px] md:w-[320px] sm:w-[220px]  max-sm:w-[190px]  '
+            'grow text-neutral-content laptop:w-[320px] tablet:w-[320px] mobile:w-[220px]  max-mobile:w-[190px]  '
           }
           placeholder={props.placeholder}
         />
 
         {props.type === 'password' && (
           <div
-            className="lg:w-[20px] md:w-[20px] sm:w-[20px]  max-sm:w-[20px]"
+            className="laptop:w-[20px] tablet:w-[20px] mobile:w-[20px]  max-mobile:w-[20px]"
             onClick={handleToggle}
           >
             {eyeIcon}
@@ -71,13 +71,10 @@ const CustomTextIconInput = <T extends FieldValues>(
       </label>
       <div className="text-md mt-3  w-full ">
         {props.error && (
-          <p role="alert" className="text-red-400 text-center">
+          <p role="alert" className="text-red-400    text-center">
             {props.error}
           </p>
         )}
-        {/* <p>{fieldState.isTouched && "Touched"}</p>
-        <p>{fieldState.isDirty && "Dirty"}</p>
-        <p>{fieldState.invalid ? "Invalid" : "Valid"}</p> */}
       </div>
     </div>
   );

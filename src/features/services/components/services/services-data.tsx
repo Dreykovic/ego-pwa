@@ -1,28 +1,20 @@
 import { CreditCardIcon, UserGroupIcon } from '@heroicons/react/24/solid';
 
-const servicesIconsClassNames = 'w-6 h-6 md:w-12 md:h-12 lg:w-12 lg:h-12';
+const servicesIconsClassNames =
+  'w-5 h-5 tablet:w-8 tablet:h-8 laptop:w-8 laptop:h-8';
 const servicesData = [
   {
     title: 'Transferts',
 
     icon: <UserGroupIcon className={servicesIconsClassNames} />,
+    path: '/cross-transfer',
   },
 
   {
     title: 'Airtime',
 
     icon: <CreditCardIcon className={servicesIconsClassNames} />,
-  },
-  {
-    title: 'Airtime',
-
-    icon: <CreditCardIcon className={servicesIconsClassNames} />,
-  },
-
-  {
-    title: 'Airtime',
-
-    icon: <CreditCardIcon className={servicesIconsClassNames} />,
+    path: '/',
   },
 ];
 
