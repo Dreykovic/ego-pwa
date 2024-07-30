@@ -7,10 +7,14 @@ type Props = {
 const LeftMenu = (props: Props) => {
   return (
     <div
-      className={`h-screen flex flex-col items-center justify-end max-laptop:hidden gap-5 bg-base-200 py-10  ${props.className}`}
+      className={`h-screen flex flex-col items-start pl-2 justify-between max-laptop:hidden gap-5 bg-base-200 py-10  ${props.className}`}
     >
-      <LeftMenuActons />
-      <LeftMenuAvatar />
+      <div>
+        <LeftMenuActons />
+      </div>
+      <div>
+        <LeftMenuAvatar />
+      </div>
     </div>
   );
 };

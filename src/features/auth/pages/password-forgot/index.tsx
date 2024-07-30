@@ -1,13 +1,14 @@
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { useRequestResetPasswordMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
+import Alert from '@/features/auth/components/ui/alert';
 import { AuthBottomLinkBlock } from '@/features/auth/components/ui/auth-bottom-link-block';
-import SuccessAlert from '@/features/auth/components/ui/success-alert';
 import {
   LoginEmailFormValues,
   LoginPhoneFormValues,
@@ -15,9 +16,11 @@ import {
   LoginEmailSchema,
   Identify,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input';
-import CustomPhoneInput from '@/shared/components/ui/input/phone-input';
 import env from '@/shared/config/env';
+import { RootState } from '@/stores';
+
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
+import CustomPhoneInput from '../../components/ui/inputs/phone-input';
 
 const PasswordForgot: React.FC = () => {
   const [pwdForgotMode, setPwdForgotMode] = useState<'phone' | 'email'>(
@@ -26,6 +29,16 @@ const PasswordForgot: React.FC = () => {
   const [globalError, setGlobalError] = useState<string>();
   const [globalSuccess, setGlobalSuccess] = useState<string>();
 
+  const { message, type } = useSelector((state: RootState) => state.message);
+  useEffect(() => {
+    if (message) {
+      if (type === 0) {
+        setGlobalError(message);
+      } else {
+        setGlobalSuccess(message);
+      }
+    }
+  });
   const {
     control,
     handleSubmit,
@@ -104,7 +117,11 @@ const PasswordForgot: React.FC = () => {
         />
       }
     >
-      {isSuccess && <SuccessAlert message={globalSuccess} />}
+      {isSuccess && <Alert message={globalSuccess} type="SUCCESS" />}
+      {message && (
+        <Alert message={message} type={type === 0 ? 'ERROR' : 'SUCCESS'} />
+      )}
+
       <div className="w-full text-center">
         <p className="my-2">Restaurer le mot de passe avec: </p>
       </div>

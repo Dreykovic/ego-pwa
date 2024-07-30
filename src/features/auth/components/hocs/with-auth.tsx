@@ -7,7 +7,7 @@ import {
   UseFormHandleSubmit,
 } from 'react-hook-form';
 
-import ErrorAlert from '../ui/error-alert';
+import Alert from '@/features/auth/components/ui/alert';
 
 type Props<T extends FieldValues> = {
   children: ReactNode;
@@ -40,7 +40,9 @@ const WithAuth = <T extends FieldValues>(props: Props<T>) => {
                 'flex flex-col items-center justify-center'
               }
             >
-              {props.error && <ErrorAlert message={props.globalErrorMsg} />}
+              {props.error && (
+                <Alert message={props.globalErrorMsg} type="ERROR" />
+              )}
               {props.children}
               <div className="my-4 flex justify-center">
                 <button className="btn btn-neutral px-10 py-2" type="submit">

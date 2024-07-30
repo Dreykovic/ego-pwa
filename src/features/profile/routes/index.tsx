@@ -10,6 +10,7 @@ const profileRoutes: RoutesConfigType = {
   profile: {
     path: '/profile', // the url
     component: <Profile />, // view rendered
+    pageName: 'Profile',
   },
 };
 

@@ -9,7 +9,8 @@ const MobileHistory = lazy(() => import('@/features/mobile-history'));
 const historyRoutes: RoutesConfigType = {
   history: {
     path: '/historique', // the url
-    component: <MobileHistory />, // view rendered
+    component: <MobileHistory />, // view rendered,
+    pageName: 'Mobile',
   },
 };
 

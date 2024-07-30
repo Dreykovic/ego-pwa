@@ -11,8 +11,9 @@ import {
   LoginEmailFormValues,
   LoginEmailSchema,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input';
 import env from '@/shared/config/env';
+
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
 
 const LoginEmail: React.FC = () => {
   const {

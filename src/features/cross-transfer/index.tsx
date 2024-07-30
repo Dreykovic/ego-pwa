@@ -24,7 +24,7 @@ const CrossTransfer: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(setPageTitle({ title: 'Transfert' }));
+    dispatch(setPageTitle({ title: 'Transfer' }));
     dispatch(setPageType({ type: 'simple' }));
   }, [dispatch]);
 

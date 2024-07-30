@@ -19,29 +19,35 @@ const authRoutes: RoutesConfigType = {
   login: {
     path: '/', // the url
     component: <Login />, // view rendered
+    pageName: '',
   },
 
   register: {
     path: '/register', // the url
     component: <Register />, // view rendered
+    pageName: '',
   },
   loginPassword: {
     path:
       env.appState != 'demo' ? '/login/password/:identify' : '/login/password', // the url
     component: <LoginPassword />, // view rendered
+    pageName: '',
   },
   loginEmail: {
     path:
       env.appState != 'demo' ? '/login/email/:phoneNumber' : '/login/email/', // the url
     component: <LoginEmail />, // view rendered
+    pageName: '',
   },
   authOtp: {
     path: env.appState != 'demo' ? '/auth/otp/:email' : '/auth/otp/', // the url
     component: <Otp />, // view rendered
+    pageName: '',
   },
   passwordForgot: {
     path: '/auth/password-forgot', // the url
     component: <PasswordForgot />, // view rendered
+    pageName: '',
   },
   passwordReset: {
     path:
@@ -49,10 +55,12 @@ const authRoutes: RoutesConfigType = {
         ? '/auth/password-reset/:token'
         : '/auth/password-reset', // the url
     component: <PasswordReset />, // view rendered
+    pageName: '',
   },
   any: {
     path: '*', // the url
     component: <Login />, // view rendered
+    pageName: '',
   },
 };
 

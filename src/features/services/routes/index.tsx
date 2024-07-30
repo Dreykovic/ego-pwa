@@ -10,6 +10,7 @@ const homeRoutes: RoutesConfigType = {
   home: {
     path: '/', // the url
     component: <Home />, // view rendered
+    pageName: 'Home',
   },
 };
 

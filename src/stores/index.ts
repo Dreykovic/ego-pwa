@@ -6,11 +6,13 @@ import env from '@/shared/config/env';
 
 import apiSlice from './api-slice';
 import authReducer from './auth-slice';
+import messageReducer from './message-slice';
 
 const combinedReducer = {
   header: headerSlice,
   rightDrawer: rightDrawerSlice,
   auth: authReducer,
+  message: messageReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 };
 

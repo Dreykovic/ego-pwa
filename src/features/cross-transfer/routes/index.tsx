@@ -7,9 +7,10 @@ import { RoutesConfigType } from '@/shared/types/routes-type';
 const CrossTransfer = lazy(() => import('@/features/cross-transfer'));
 
 const crossTransferRoutes: RoutesConfigType = {
-  crossTransfert: {
+  crossTransfer: {
     path: '/cross-transfer', // the url
     component: <CrossTransfer />, // view rendered
+    pageName: 'Cross',
   },
 };
 

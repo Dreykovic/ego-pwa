@@ -12,9 +12,10 @@ import {
   RegisterFormValues,
   RegisterSchema,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
-import CustomPhoneInput from '@/shared/components/ui/input/phone-input';
 import env from '@/shared/config/env';
+
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
+import CustomPhoneInput from '../../components/ui/inputs/phone-input';
 
 const Register: React.FC = () => {
   const [globalError, setGlobalError] = useState<string>();

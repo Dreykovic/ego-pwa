@@ -8,10 +8,11 @@ import {
   useVerifyOtpMutation,
 } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
-import SuccessAlert from '@/features/auth/components/ui/success-alert';
 import { FormValues, OtpFormValues, OtpSchema } from '@/features/auth/types';
-import OtpInput from '@/shared/components/ui/input/otp-input';
 import env from '@/shared/config/env';
+
+import Alert from '../../components/ui/alert';
+import OtpInput from '../../components/ui/inputs/otp-input';
 
 const Otp: React.FC = () => {
   const { email } = useParams();
@@ -107,7 +108,7 @@ const Otp: React.FC = () => {
       error={verifyError || resendError}
       submitBtnText="Envoyer"
     >
-      {isSuccess && <SuccessAlert message={globalSuccess} />}
+      {isSuccess && <Alert message={globalSuccess} type="SUCCESS" />}
 
       <div className="w-full ">
         <p className="m-3 text-center">

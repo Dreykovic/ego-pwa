@@ -1,7 +1,8 @@
 import { EnvelopeIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FieldErrors, SubmitHandler, useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { useVerifyMutation } from '@/features/auth/api';
@@ -14,14 +15,23 @@ import {
   LoginEmailSchema,
   Identify,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input';
-import CustomPhoneInput from '@/shared/components/ui/input/phone-input';
 import env from '@/shared/config/env';
+import { RootState } from '@/stores';
+
+import Alert from '../../components/ui/alert';
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
+import CustomPhoneInput from '../../components/ui/inputs/phone-input';
 
 const Login: React.FC = () => {
   const [loginMode, setLoginMode] = useState<'phone' | 'email'>('phone');
   const [globalError, setGlobalError] = useState<string>();
 
+  const { message, type } = useSelector((state: RootState) => state.message);
+  useEffect(() => {
+    if (message) {
+      setGlobalError(message);
+    }
+  });
   const {
     control,
     handleSubmit,
@@ -83,14 +93,11 @@ const Login: React.FC = () => {
           case 'EMAIL_REQUIRED':
             navigate(`/login/email/${userIdentify.identify}`);
             return;
-            break;
 
           default:
             setGlobalError(error?.data?.message);
             return;
-            break;
         }
-        setGlobalError(error?.data?.message);
       });
   };
 
@@ -115,6 +122,9 @@ const Login: React.FC = () => {
         />
       }
     >
+      {message && (
+        <Alert message={message} type={type === 0 ? 'ERROR' : 'SUCCESS'} />
+      )}
       <div className="w-full text-center">
         <p className="my-2">Se connecter avec: </p>
       </div>

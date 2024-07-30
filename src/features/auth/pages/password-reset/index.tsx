@@ -1,20 +1,29 @@
 import { KeyIcon } from '@heroicons/react/24/outline';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useResetPasswordMutation } from '@/features/auth/api';
 import WithAuth from '@/features/auth/components/hocs/with-auth';
+import Alert from '@/features/auth/components/ui/alert';
 import {
   FormValues,
   PasswordResetFormValues,
   PasswordResetSchema,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
 import env from '@/shared/config/env';
+import { AppDispatch } from '@/stores';
+import { sendGlobalMessage } from '@/stores/message-slice';
+
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
 
 const PasswordReset: React.FC = () => {
   const { token } = useParams();
+  const [globalError, setGlobalError] = useState<string>();
+  const [globalSuccess, setGlobalSuccess] = useState<string>();
+  const dispatch = useDispatch<AppDispatch>();
 
   const {
     control,
@@ -24,7 +33,8 @@ const PasswordReset: React.FC = () => {
     resolver: zodResolver(PasswordResetSchema),
   });
   const navigate = useNavigate();
-  const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
+  const [resetPassword, { isLoading, error, isSuccess }] =
+    useResetPasswordMutation();
   const onSubmit: SubmitHandler<PasswordResetFormValues> = async (data) => {
     // TODO: Enregistrer l'adresse du front end dans le en du back
     // console.log(data);
@@ -40,17 +50,27 @@ const PasswordReset: React.FC = () => {
       token: token as string,
       newPassword: data.password,
     };
-    console.log(userResetPasswordData);
+    //console.log(userResetPasswordData);
 
     resetPassword(userResetPasswordData)
       .unwrap()
       .then((payload) => {
+        if (payload.content.code === 'PASSWORD_RESET') {
+          setGlobalSuccess('');
+          dispatch(sendGlobalMessage({ message: payload.message, type: 1 }));
+
+          // navigate('/');
+        }
         console.log('fulfilled', payload);
       })
       .catch((error) => {
         console.error('rejected', error);
         if (error.data.content.code === 'INVALID_TOKEN') {
           // TODO: Avec u message pour le metttre dans le composant suivant
+          setGlobalError('');
+          dispatch(
+            sendGlobalMessage({ message: error?.data?.message, type: 0 }),
+          );
           navigate('/auth/password-forgot');
         }
       });
@@ -64,8 +84,11 @@ const PasswordReset: React.FC = () => {
         handleSubmit={handleSubmit}
         isLoading={isLoading}
         error={error}
+        globalErrorMsg={globalError}
         submitBtnText="Confirmer"
       >
+        {isSuccess && <Alert message={globalSuccess} type="SUCCESS" />}
+
         <CustomTextIconInput<PasswordResetFormValues>
           name="password"
           control={control}

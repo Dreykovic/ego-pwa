@@ -13,10 +13,11 @@ import {
   LoginPasswordFormValues,
   LoginPasswordSchema,
 } from '@/features/auth/types';
-import CustomTextIconInput from '@/shared/components/ui/input/custom-text-icon-input/index';
 import env from '@/shared/config/env';
 import { AppDispatch } from '@/stores';
 import { makeGlobalLogin } from '@/stores/auth-slice';
+
+import CustomTextIconInput from '../../components/ui/inputs/custom-text-icon-input';
 
 const LoginPassword: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
